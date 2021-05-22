@@ -22,7 +22,7 @@ final $typed_data.Uint8List getHomeInfoDescriptor = $convert.base64Decode('CgtHZ
 const HomeInfo$json = const {
   '1': 'HomeInfo',
   '2': const [
-    const {'1': 'n_containers', '3': 1, '4': 1, '5': 5, '10': 'nContainers'},
+    const {'1': 'n_r_containers', '3': 1, '4': 1, '5': 5, '10': 'nRContainers'},
     const {'1': 'food_g', '3': 2, '4': 1, '5': 5, '10': 'foodG'},
     const {'1': 'waste_saved_g', '3': 3, '4': 1, '5': 5, '10': 'wasteSavedG'},
     const {'1': 'co2_saved_g', '3': 4, '4': 1, '5': 5, '10': 'co2SavedG'},
@@ -31,4 +31,4 @@ const HomeInfo$json = const {
 };
 
 /// Descriptor for `HomeInfo`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List homeInfoDescriptor = $convert.base64Decode('CghIb21lSW5mbxIhCgxuX2NvbnRhaW5lcnMYASABKAVSC25Db250YWluZXJzEhUKBmZvb2RfZxgCIAEoBVIFZm9vZEcSIgoNd2FzdGVfc2F2ZWRfZxgDIAEoBVILd2FzdGVTYXZlZEcSHgoLY28yX3NhdmVkX2cYBCABKAVSCWNvMlNhdmVkRxIbCgluX3Jld2FyZHMYBSABKAVSCG5SZXdhcmRz');
+final $typed_data.Uint8List homeInfoDescriptor = $convert.base64Decode('CghIb21lSW5mbxIkCg5uX3JfY29udGFpbmVycxgBIAEoBVIMblJDb250YWluZXJzEhUKBmZvb2RfZxgCIAEoBVIFZm9vZEcSIgoNd2FzdGVfc2F2ZWRfZxgDIAEoBVILd2FzdGVTYXZlZEcSHgoLY28yX3NhdmVkX2cYBCABKAVSCWNvMlNhdmVkRxIbCgluX3Jld2FyZHMYBSABKAVSCG5SZXdhcmRz');

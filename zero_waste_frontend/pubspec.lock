@@ -134,7 +134,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: bf15566e7d0bd96e4bb2cb55695717eb190822f6
+      resolved-ref: "33db0b651ee8434b403b6709fef928c13940169b"
       url: "git@github.com:vidklopcic/flutter_persistent_socket.git"
     source: git
     version: "0.0.1"
@@ -304,6 +304,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.1"
+  sqlite3_flutter_libs:
+    dependency: transitive
+    description:
+      name: sqlite3_flutter_libs
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.3"
   stack_trace:
     dependency: transitive
     description:

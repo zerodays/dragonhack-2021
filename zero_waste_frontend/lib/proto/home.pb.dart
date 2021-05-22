@@ -52,7 +52,7 @@ class GetHomeInfo extends $pb.GeneratedMessage {
 
 class HomeInfo extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'HomeInfo', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'home'), createEmptyInstance: create)
-    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nContainers', $pb.PbFieldType.O3)
+    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nRContainers', $pb.PbFieldType.O3)
     ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'foodG', $pb.PbFieldType.O3)
     ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'wasteSavedG', $pb.PbFieldType.O3)
     ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'co2SavedG', $pb.PbFieldType.O3)
@@ -62,15 +62,15 @@ class HomeInfo extends $pb.GeneratedMessage {
 
   HomeInfo._() : super();
   factory HomeInfo({
-    $core.int nContainers,
+    $core.int nRContainers,
     $core.int foodG,
     $core.int wasteSavedG,
     $core.int co2SavedG,
     $core.int nRewards,
   }) {
     final _result = create();
-    if (nContainers != null) {
-      _result.nContainers = nContainers;
+    if (nRContainers != null) {
+      _result.nRContainers = nRContainers;
     }
     if (foodG != null) {
       _result.foodG = foodG;
@@ -108,13 +108,13 @@ class HomeInfo extends $pb.GeneratedMessage {
   static HomeInfo _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.int get nContainers => $_getIZ(0);
+  $core.int get nRContainers => $_getIZ(0);
   @$pb.TagNumber(1)
-  set nContainers($core.int v) { $_setSignedInt32(0, v); }
+  set nRContainers($core.int v) { $_setSignedInt32(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasNContainers() => $_has(0);
+  $core.bool hasNRContainers() => $_has(0);
   @$pb.TagNumber(1)
-  void clearNContainers() => clearField(1);
+  void clearNRContainers() => clearField(1);
 
   @$pb.TagNumber(2)
   $core.int get foodG => $_getIZ(1);

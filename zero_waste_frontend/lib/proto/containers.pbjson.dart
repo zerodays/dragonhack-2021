@@ -8,61 +8,61 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-@$core.Deprecated('Use wasteContainersDescriptor instead')
-const WasteContainers$json = const {
-  '1': 'WasteContainers',
+@$core.Deprecated('Use rContainersDescriptor instead')
+const RContainers$json = const {
+  '1': 'RContainers',
   '2': const [
-    const {'1': 'containers', '3': 1, '4': 3, '5': 11, '6': '.containers.WasteContainers.ContainersEntry', '10': 'containers'},
+    const {'1': 'containers', '3': 1, '4': 3, '5': 11, '6': '.containers.RContainers.ContainersEntry', '10': 'containers'},
   ],
-  '3': const [WasteContainers_ContainersEntry$json],
+  '3': const [RContainers_ContainersEntry$json],
 };
 
-@$core.Deprecated('Use wasteContainersDescriptor instead')
-const WasteContainers_ContainersEntry$json = const {
+@$core.Deprecated('Use rContainersDescriptor instead')
+const RContainers_ContainersEntry$json = const {
   '1': 'ContainersEntry',
   '2': const [
     const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
-    const {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.containers.WasteContainer', '10': 'value'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.containers.RContainer', '10': 'value'},
   ],
   '7': const {'7': true},
 };
 
-/// Descriptor for `WasteContainers`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wasteContainersDescriptor = $convert.base64Decode('Cg9XYXN0ZUNvbnRhaW5lcnMSSwoKY29udGFpbmVycxgBIAMoCzIrLmNvbnRhaW5lcnMuV2FzdGVDb250YWluZXJzLkNvbnRhaW5lcnNFbnRyeVIKY29udGFpbmVycxpZCg9Db250YWluZXJzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSMAoFdmFsdWUYAiABKAsyGi5jb250YWluZXJzLldhc3RlQ29udGFpbmVyUgV2YWx1ZToCOAE=');
-@$core.Deprecated('Use scanWasteContainerDescriptor instead')
-const ScanWasteContainer$json = const {
-  '1': 'ScanWasteContainer',
+/// Descriptor for `RContainers`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List rContainersDescriptor = $convert.base64Decode('CgtSQ29udGFpbmVycxJHCgpjb250YWluZXJzGAEgAygLMicuY29udGFpbmVycy5SQ29udGFpbmVycy5Db250YWluZXJzRW50cnlSCmNvbnRhaW5lcnMaVQoPQ29udGFpbmVyc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EiwKBXZhbHVlGAIgASgLMhYuY29udGFpbmVycy5SQ29udGFpbmVyUgV2YWx1ZToCOAE=');
+@$core.Deprecated('Use scanRContainerDescriptor instead')
+const ScanRContainer$json = const {
+  '1': 'ScanRContainer',
   '2': const [
     const {'1': 'nfc_id', '3': 1, '4': 1, '5': 9, '10': 'nfcId'},
   ],
 };
 
-/// Descriptor for `ScanWasteContainer`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List scanWasteContainerDescriptor = $convert.base64Decode('ChJTY2FuV2FzdGVDb250YWluZXISFQoGbmZjX2lkGAEgASgJUgVuZmNJZA==');
-@$core.Deprecated('Use scannedWasteContainerDescriptor instead')
-const ScannedWasteContainer$json = const {
-  '1': 'ScannedWasteContainer',
+/// Descriptor for `ScanRContainer`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List scanRContainerDescriptor = $convert.base64Decode('Cg5TY2FuUkNvbnRhaW5lchIVCgZuZmNfaWQYASABKAlSBW5mY0lk');
+@$core.Deprecated('Use scannedRContainerDescriptor instead')
+const ScannedRContainer$json = const {
+  '1': 'ScannedRContainer',
   '2': const [
     const {'1': 'nfc_id', '3': 1, '4': 1, '5': 9, '10': 'nfcId'},
     const {'1': 'date_created', '3': 2, '4': 1, '5': 4, '10': 'dateCreated'},
   ],
 };
 
-/// Descriptor for `ScannedWasteContainer`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List scannedWasteContainerDescriptor = $convert.base64Decode('ChVTY2FubmVkV2FzdGVDb250YWluZXISFQoGbmZjX2lkGAEgASgJUgVuZmNJZBIhCgxkYXRlX2NyZWF0ZWQYAiABKARSC2RhdGVDcmVhdGVk');
-@$core.Deprecated('Use loadContainerInfoDescriptor instead')
-const LoadContainerInfo$json = const {
-  '1': 'LoadContainerInfo',
+/// Descriptor for `ScannedRContainer`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List scannedRContainerDescriptor = $convert.base64Decode('ChFTY2FubmVkUkNvbnRhaW5lchIVCgZuZmNfaWQYASABKAlSBW5mY0lkEiEKDGRhdGVfY3JlYXRlZBgCIAEoBFILZGF0ZUNyZWF0ZWQ=');
+@$core.Deprecated('Use loadRContainerInfoDescriptor instead')
+const LoadRContainerInfo$json = const {
+  '1': 'LoadRContainerInfo',
   '2': const [
     const {'1': 'nfc_id', '3': 1, '4': 1, '5': 9, '10': 'nfcId'},
   ],
 };
 
-/// Descriptor for `LoadContainerInfo`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List loadContainerInfoDescriptor = $convert.base64Decode('ChFMb2FkQ29udGFpbmVySW5mbxIVCgZuZmNfaWQYASABKAlSBW5mY0lk');
-@$core.Deprecated('Use containerInfoDescriptor instead')
-const ContainerInfo$json = const {
-  '1': 'ContainerInfo',
+/// Descriptor for `LoadRContainerInfo`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List loadRContainerInfoDescriptor = $convert.base64Decode('ChJMb2FkUkNvbnRhaW5lckluZm8SFQoGbmZjX2lkGAEgASgJUgVuZmNJZA==');
+@$core.Deprecated('Use rContainerInfoDescriptor instead')
+const RContainerInfo$json = const {
+  '1': 'RContainerInfo',
   '2': const [
     const {'1': 'nfc_id', '3': 1, '4': 1, '5': 9, '10': 'nfcId'},
     const {'1': 'origin_seller', '3': 2, '4': 1, '5': 9, '10': 'originSeller'},
@@ -73,42 +73,42 @@ const ContainerInfo$json = const {
   ],
 };
 
-/// Descriptor for `ContainerInfo`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List containerInfoDescriptor = $convert.base64Decode('Cg1Db250YWluZXJJbmZvEhUKBm5mY19pZBgBIAEoCVIFbmZjSWQSIwoNb3JpZ2luX3NlbGxlchgCIAEoCVIMb3JpZ2luU2VsbGVyEicKD29yaWdpbl9sb2NhdGlvbhgDIAEoCVIOb3JpZ2luTG9jYXRpb24SFQoGZm9vZF9nGAQgASgFUgVmb29kRxIiCg13YXN0ZV9zYXZlZF9nGAUgASgFUgt3YXN0ZVNhdmVkRxIeCgtjbzJfc2F2ZWRfZxgGIAEoBVIJY28yU2F2ZWRH');
-@$core.Deprecated('Use loadContainerMassDescriptor instead')
-const LoadContainerMass$json = const {
-  '1': 'LoadContainerMass',
+/// Descriptor for `RContainerInfo`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List rContainerInfoDescriptor = $convert.base64Decode('Cg5SQ29udGFpbmVySW5mbxIVCgZuZmNfaWQYASABKAlSBW5mY0lkEiMKDW9yaWdpbl9zZWxsZXIYAiABKAlSDG9yaWdpblNlbGxlchInCg9vcmlnaW5fbG9jYXRpb24YAyABKAlSDm9yaWdpbkxvY2F0aW9uEhUKBmZvb2RfZxgEIAEoBVIFZm9vZEcSIgoNd2FzdGVfc2F2ZWRfZxgFIAEoBVILd2FzdGVTYXZlZEcSHgoLY28yX3NhdmVkX2cYBiABKAVSCWNvMlNhdmVkRw==');
+@$core.Deprecated('Use loadRContainerMassDescriptor instead')
+const LoadRContainerMass$json = const {
+  '1': 'LoadRContainerMass',
   '2': const [
     const {'1': 'nfc_id', '3': 1, '4': 1, '5': 9, '10': 'nfcId'},
   ],
 };
 
-/// Descriptor for `LoadContainerMass`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List loadContainerMassDescriptor = $convert.base64Decode('ChFMb2FkQ29udGFpbmVyTWFzcxIVCgZuZmNfaWQYASABKAlSBW5mY0lk');
-@$core.Deprecated('Use containerMassDescriptor instead')
-const ContainerMass$json = const {
-  '1': 'ContainerMass',
+/// Descriptor for `LoadRContainerMass`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List loadRContainerMassDescriptor = $convert.base64Decode('ChJMb2FkUkNvbnRhaW5lck1hc3MSFQoGbmZjX2lkGAEgASgJUgVuZmNJZA==');
+@$core.Deprecated('Use rContainerMassDescriptor instead')
+const RContainerMass$json = const {
+  '1': 'RContainerMass',
   '2': const [
     const {'1': 'nfc_id', '3': 1, '4': 1, '5': 9, '10': 'nfcId'},
     const {'1': 'mass', '3': 2, '4': 3, '5': 11, '6': '.containers.TimePoint', '10': 'mass'},
   ],
 };
 
-/// Descriptor for `ContainerMass`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List containerMassDescriptor = $convert.base64Decode('Cg1Db250YWluZXJNYXNzEhUKBm5mY19pZBgBIAEoCVIFbmZjSWQSKQoEbWFzcxgCIAMoCzIVLmNvbnRhaW5lcnMuVGltZVBvaW50UgRtYXNz');
-@$core.Deprecated('Use loadContainerImpactDescriptor instead')
-const LoadContainerImpact$json = const {
-  '1': 'LoadContainerImpact',
+/// Descriptor for `RContainerMass`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List rContainerMassDescriptor = $convert.base64Decode('Cg5SQ29udGFpbmVyTWFzcxIVCgZuZmNfaWQYASABKAlSBW5mY0lkEikKBG1hc3MYAiADKAsyFS5jb250YWluZXJzLlRpbWVQb2ludFIEbWFzcw==');
+@$core.Deprecated('Use loadRContainerImpactDescriptor instead')
+const LoadRContainerImpact$json = const {
+  '1': 'LoadRContainerImpact',
   '2': const [
     const {'1': 'nfc_id', '3': 1, '4': 1, '5': 9, '10': 'nfcId'},
   ],
 };
 
-/// Descriptor for `LoadContainerImpact`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List loadContainerImpactDescriptor = $convert.base64Decode('ChNMb2FkQ29udGFpbmVySW1wYWN0EhUKBm5mY19pZBgBIAEoCVIFbmZjSWQ=');
-@$core.Deprecated('Use containerImpactDescriptor instead')
-const ContainerImpact$json = const {
-  '1': 'ContainerImpact',
+/// Descriptor for `LoadRContainerImpact`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List loadRContainerImpactDescriptor = $convert.base64Decode('ChRMb2FkUkNvbnRhaW5lckltcGFjdBIVCgZuZmNfaWQYASABKAlSBW5mY0lk');
+@$core.Deprecated('Use rContainerImpactDescriptor instead')
+const RContainerImpact$json = const {
+  '1': 'RContainerImpact',
   '2': const [
     const {'1': 'nfc_id', '3': 1, '4': 1, '5': 9, '10': 'nfcId'},
     const {'1': 'waste', '3': 2, '4': 3, '5': 11, '6': '.containers.TimePoint', '10': 'waste'},
@@ -116,32 +116,32 @@ const ContainerImpact$json = const {
   ],
 };
 
-/// Descriptor for `ContainerImpact`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List containerImpactDescriptor = $convert.base64Decode('Cg9Db250YWluZXJJbXBhY3QSFQoGbmZjX2lkGAEgASgJUgVuZmNJZBIrCgV3YXN0ZRgCIAMoCzIVLmNvbnRhaW5lcnMuVGltZVBvaW50UgV3YXN0ZRInCgNjbzIYAyADKAsyFS5jb250YWluZXJzLlRpbWVQb2ludFIDY28y');
-@$core.Deprecated('Use loadContainerPurchasesDescriptor instead')
-const LoadContainerPurchases$json = const {
-  '1': 'LoadContainerPurchases',
+/// Descriptor for `RContainerImpact`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List rContainerImpactDescriptor = $convert.base64Decode('ChBSQ29udGFpbmVySW1wYWN0EhUKBm5mY19pZBgBIAEoCVIFbmZjSWQSKwoFd2FzdGUYAiADKAsyFS5jb250YWluZXJzLlRpbWVQb2ludFIFd2FzdGUSJwoDY28yGAMgAygLMhUuY29udGFpbmVycy5UaW1lUG9pbnRSA2NvMg==');
+@$core.Deprecated('Use loadRContainerPurchasesDescriptor instead')
+const LoadRContainerPurchases$json = const {
+  '1': 'LoadRContainerPurchases',
   '2': const [
     const {'1': 'nfc_id', '3': 1, '4': 1, '5': 9, '10': 'nfcId'},
   ],
 };
 
-/// Descriptor for `LoadContainerPurchases`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List loadContainerPurchasesDescriptor = $convert.base64Decode('ChZMb2FkQ29udGFpbmVyUHVyY2hhc2VzEhUKBm5mY19pZBgBIAEoCVIFbmZjSWQ=');
-@$core.Deprecated('Use containerPurchasesDescriptor instead')
-const ContainerPurchases$json = const {
-  '1': 'ContainerPurchases',
+/// Descriptor for `LoadRContainerPurchases`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List loadRContainerPurchasesDescriptor = $convert.base64Decode('ChdMb2FkUkNvbnRhaW5lclB1cmNoYXNlcxIVCgZuZmNfaWQYASABKAlSBW5mY0lk');
+@$core.Deprecated('Use rContainerPurchasesDescriptor instead')
+const RContainerPurchases$json = const {
+  '1': 'RContainerPurchases',
   '2': const [
     const {'1': 'nfc_id', '3': 1, '4': 1, '5': 9, '10': 'nfcId'},
     const {'1': 'purchases', '3': 2, '4': 3, '5': 11, '6': '.containers.Purchase', '10': 'purchases'},
   ],
 };
 
-/// Descriptor for `ContainerPurchases`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List containerPurchasesDescriptor = $convert.base64Decode('ChJDb250YWluZXJQdXJjaGFzZXMSFQoGbmZjX2lkGAEgASgJUgVuZmNJZBIyCglwdXJjaGFzZXMYAiADKAsyFC5jb250YWluZXJzLlB1cmNoYXNlUglwdXJjaGFzZXM=');
-@$core.Deprecated('Use wasteContainerDescriptor instead')
-const WasteContainer$json = const {
-  '1': 'WasteContainer',
+/// Descriptor for `RContainerPurchases`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List rContainerPurchasesDescriptor = $convert.base64Decode('ChNSQ29udGFpbmVyUHVyY2hhc2VzEhUKBm5mY19pZBgBIAEoCVIFbmZjSWQSMgoJcHVyY2hhc2VzGAIgAygLMhQuY29udGFpbmVycy5QdXJjaGFzZVIJcHVyY2hhc2Vz');
+@$core.Deprecated('Use rContainerDescriptor instead')
+const RContainer$json = const {
+  '1': 'RContainer',
   '2': const [
     const {'1': 'nfc_id', '3': 1, '4': 1, '5': 9, '10': 'nfcId'},
     const {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
@@ -149,8 +149,8 @@ const WasteContainer$json = const {
   ],
 };
 
-/// Descriptor for `WasteContainer`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wasteContainerDescriptor = $convert.base64Decode('Cg5XYXN0ZUNvbnRhaW5lchIVCgZuZmNfaWQYASABKAlSBW5mY0lkEhIKBG5hbWUYAiABKAlSBG5hbWUSIQoMZGF0ZV9jcmVhdGVkGAMgASgEUgtkYXRlQ3JlYXRlZA==');
+/// Descriptor for `RContainer`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List rContainerDescriptor = $convert.base64Decode('CgpSQ29udGFpbmVyEhUKBm5mY19pZBgBIAEoCVIFbmZjSWQSEgoEbmFtZRgCIAEoCVIEbmFtZRIhCgxkYXRlX2NyZWF0ZWQYAyABKARSC2RhdGVDcmVhdGVk');
 @$core.Deprecated('Use timePointDescriptor instead')
 const TimePoint$json = const {
   '1': 'TimePoint',
