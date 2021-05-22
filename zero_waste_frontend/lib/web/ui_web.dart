@@ -4,8 +4,9 @@ import 'package:gm5_utils/mixins/subsctiptions_mixin.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste_frontend/common/globals.dart';
 import 'package:zero_waste_frontend/common/theme.dart';
-import 'package:zero_waste_frontend/web/router.dart';
+import 'package:zero_waste_frontend/mobile/router.dart';
 import 'home/home_provider.dart';
+import 'login/login.dart';
 
 Future<Widget> get application async {
   return MultiProvider(
@@ -39,8 +40,11 @@ class _ZeroWasteWebState extends State<ZeroWasteWeb> with SubscriptionsMixin {
         theme: zeroWasteTheme.copyWith(
           textTheme: zeroWasteTheme.textTheme.copyWith(),
         ),
-        onGenerateRoute: FluroRouter.router.generator,
-        initialRoute: '/',
+        onGenerateRoute: (settings) {
+          if (socketApi.authenticated.val) return FluroRouter.router.generator(settings);
+          return FluroRouter.router.matchRoute(context, Login.route).route;
+        },
+        initialRoute: socketApi.authenticated.val ? '/' : Login.route,
       ),
     );
   }
@@ -49,11 +53,21 @@ class _ZeroWasteWebState extends State<ZeroWasteWeb> with SubscriptionsMixin {
   void initState() {
     super.initState();
     FluroRouter.setupRouter();
+    listen(socketApi.authenticated.changes, _authChange);
     listen(socketApi.connection.connected.changes, _connChange);
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      if (!socketApi.authenticated.val) _authChange(false);
       if (!socketApi.connection.connected.val) _connChange(false);
     });
+  }
+
+  void _authChange(bool authenticated) {
+    if (authenticated) {
+      FluroRouter.router.navigateTo(ZeroWasteWeb.navigator.currentContext, '/', clearStack: true);
+    } else {
+      FluroRouter.router.navigateTo(ZeroWasteWeb.navigator.currentContext, Login.route, clearStack: true);
+    }
   }
 
   void _connChange(bool connected) {

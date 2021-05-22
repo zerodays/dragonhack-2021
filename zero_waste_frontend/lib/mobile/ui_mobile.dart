@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gm5_utils/mixins/subsctiptions_mixin.dart';
@@ -7,12 +6,8 @@ import 'package:moor/moor.dart' hide Column;
 import 'package:moor/ffi.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:zero_waste_frontend/common/api/authentication.dart';
-import 'package:zero_waste_frontend/common/globals.dart';
 import 'package:zero_waste_frontend/common/theme.dart';
 import 'package:zero_waste_frontend/mobile/router.dart';
-
-import 'login/login.dart';
 
 QueryExecutor openDatabaseConnection() {
   return LazyDatabase(() async {
@@ -50,16 +45,13 @@ class _ZeroWasteMobileState extends State<ZeroWasteMobile> with SubscriptionsMix
       },
       child: MaterialApp(
         navigatorKey: navigator,
-        title: 'Bolder Scena',
+        title: 'Zero Waste',
         theme: zeroWasteTheme.copyWith(
           textTheme: zeroWasteTheme.textTheme.copyWith(),
           brightness: Brightness.dark,
         ),
-        onGenerateRoute: (settings) {
-          if (socketApi.authenticated.val) return FluroRouter.router.generator(settings);
-          return FluroRouter.router.matchRoute(context, Login.route).route;
-        },
-        initialRoute: socketApi.authenticated.val ? '/' : Login.route,
+        onGenerateRoute: FluroRouter.router.generator,
+        initialRoute: '/',
       ),
     );
   }
@@ -68,12 +60,7 @@ class _ZeroWasteMobileState extends State<ZeroWasteMobile> with SubscriptionsMix
   void initState() {
     super.initState();
     FluroRouter.setupRouter();
-    listen(socketApi.authenticated.changes, _authChange);
     WidgetsBinding.instance.addObserver(this);
-
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      if (!socketApi.authenticated.val) _authChange(false);
-    });
   }
 
   @override
@@ -86,16 +73,6 @@ class _ZeroWasteMobileState extends State<ZeroWasteMobile> with SubscriptionsMix
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
-      authenticationController.init();
-    }
-  }
-
-  void _authChange(bool authenticated) {
-    if (authenticated) {
-      FluroRouter.router.navigateTo(navigator.currentContext, '/', clearStack: true, transition: TransitionType.none);
-    } else {
-      FluroRouter.router
-          .navigateTo(navigator.currentContext, Login.route, clearStack: true, transition: TransitionType.none);
     }
   }
 }
