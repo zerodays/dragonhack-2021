@@ -6,6 +6,7 @@ from django.db.models import QuerySet
 import proto.messages as pb
 from containers.models import RContainer
 from containers.savings_calculator import SavingsCalculator
+from sellers.models import Seller
 
 
 class ContainersReceiver(psd.FPSReceiver):
@@ -28,4 +29,19 @@ class ContainersReceiver(psd.FPSReceiver):
             return psd.FPSReceiverError('Container does not exist')
         response = pb.TxRContainerInfo()
         response.proto = container.get_info()
+        self.consumer.send_message(response)
+
+    @psd.receive(auth=False)
+    def scan_container(self, message: pb.RxScanRContainer):
+        # todo - validate nfc_id
+        container: RContainer = RContainer.objects.get_or_create(
+            nfc_id=message.proto.nfc_id,
+            defaults={
+                'origin_seller': Seller.objects.get_or_create(name='Rifuzl')[0]
+            }
+        )[0]
+
+        response = pb.TxScannedRContainer()
+        response.proto.nfc_id = container.nfc_id
+        response.proto.date_created = psd.to_timestamp(container.date_created)
         self.consumer.send_message(response)

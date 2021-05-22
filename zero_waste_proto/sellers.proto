@@ -1,0 +1,13 @@
+syntax = "proto3";
+package sellers;
+
+/*
+type = 'new-purchase'
+origin = client
+ */
+message NewPurchase {
+  string nfc_id = 1;
+  string product_id = 2;
+  int32 weight_g = 3;
+}
+
