@@ -12,7 +12,7 @@ from sellers.models import Seller
 class ContainersReceiver(psd.FPSReceiver):
     @psd.receive(auth=False)
     def get_home_info(self, message: pb.RxGetHomeInfo):
-        containers: QuerySet[RContainer] = RContainer.objects.filter(nfc_id__in=message.proto.nfc_ids)
+        containers: QuerySet[RContainer] = RContainer.objects.filter(nfc_id__in=message.proto.nfc_ids or [])
         response = pb.TxHomeInfo()
         response.proto.food_g = sum([c.weight_sum_g for c in containers])
         response.proto.co2_saved_g = SavingsCalculator.g_co2(response.proto.food_g)

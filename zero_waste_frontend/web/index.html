@@ -21,16 +21,18 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="zero_waste_frontend">
+  <meta name="apple-mobile-web-app-title" content="Zero Waste">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <script defer src="sql-wasm.js"></script>
 
-  <title>zero_waste_frontend</title>
+  <title>Zero Waste</title>
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
-  <!-- This script installs service_worker.js to provide PWA functionality to
-       application. For more information, see:
-       https://developers.google.com/web/fundamentals/primers/service-workers -->
-  <script>
+<!-- This script installs service_worker.js to provide PWA functionality to
+     application. For more information, see:
+     https://developers.google.com/web/fundamentals/primers/service-workers -->
+<script>
     var serviceWorkerVersion = null;
     var scriptLoaded = false;
     function loadMainDartJs() {
@@ -96,3 +98,4 @@
   </script>
 </body>
 </html>
+

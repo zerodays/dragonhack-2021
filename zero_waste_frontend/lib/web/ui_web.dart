@@ -4,7 +4,7 @@ import 'package:gm5_utils/mixins/subsctiptions_mixin.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste_frontend/common/globals.dart';
 import 'package:zero_waste_frontend/common/theme.dart';
-import 'package:zero_waste_frontend/mobile/router.dart';
+import 'package:zero_waste_frontend/web/router.dart';
 import 'home/home_provider.dart';
 import 'login/login.dart';
 
