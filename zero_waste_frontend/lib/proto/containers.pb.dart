@@ -214,6 +214,10 @@ class RContainerInfo extends $pb.GeneratedMessage {
     ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'foodG', $pb.PbFieldType.O3)
     ..a<$core.int>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'wasteSavedG', $pb.PbFieldType.O3)
     ..a<$core.int>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'co2SavedG', $pb.PbFieldType.O3)
+    ..pc<TimePoint>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mass', $pb.PbFieldType.PM, subBuilder: TimePoint.create)
+    ..pc<TimePoint>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'co2', $pb.PbFieldType.PM, subBuilder: TimePoint.create)
+    ..pc<TimePoint>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'waste', $pb.PbFieldType.PM, subBuilder: TimePoint.create)
+    ..pc<Purchase>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'purchases', $pb.PbFieldType.PM, subBuilder: Purchase.create)
     ..hasRequiredFields = false
   ;
 
@@ -225,6 +229,10 @@ class RContainerInfo extends $pb.GeneratedMessage {
     $core.int foodG,
     $core.int wasteSavedG,
     $core.int co2SavedG,
+    $core.Iterable<TimePoint> mass,
+    $core.Iterable<TimePoint> co2,
+    $core.Iterable<TimePoint> waste,
+    $core.Iterable<Purchase> purchases,
   }) {
     final _result = create();
     if (nfcId != null) {
@@ -244,6 +252,18 @@ class RContainerInfo extends $pb.GeneratedMessage {
     }
     if (co2SavedG != null) {
       _result.co2SavedG = co2SavedG;
+    }
+    if (mass != null) {
+      _result.mass.addAll(mass);
+    }
+    if (co2 != null) {
+      _result.co2.addAll(co2);
+    }
+    if (waste != null) {
+      _result.waste.addAll(waste);
+    }
+    if (purchases != null) {
+      _result.purchases.addAll(purchases);
     }
     return _result;
   }
@@ -321,320 +341,18 @@ class RContainerInfo extends $pb.GeneratedMessage {
   $core.bool hasCo2SavedG() => $_has(5);
   @$pb.TagNumber(6)
   void clearCo2SavedG() => clearField(6);
-}
 
-class LoadRContainerMass extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LoadRContainerMass', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'containers'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nfcId')
-    ..hasRequiredFields = false
-  ;
+  @$pb.TagNumber(7)
+  $core.List<TimePoint> get mass => $_getList(6);
 
-  LoadRContainerMass._() : super();
-  factory LoadRContainerMass({
-    $core.String nfcId,
-  }) {
-    final _result = create();
-    if (nfcId != null) {
-      _result.nfcId = nfcId;
-    }
-    return _result;
-  }
-  factory LoadRContainerMass.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory LoadRContainerMass.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  LoadRContainerMass clone() => LoadRContainerMass()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  LoadRContainerMass copyWith(void Function(LoadRContainerMass) updates) => super.copyWith((message) => updates(message as LoadRContainerMass)) as LoadRContainerMass; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static LoadRContainerMass create() => LoadRContainerMass._();
-  LoadRContainerMass createEmptyInstance() => create();
-  static $pb.PbList<LoadRContainerMass> createRepeated() => $pb.PbList<LoadRContainerMass>();
-  @$core.pragma('dart2js:noInline')
-  static LoadRContainerMass getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<LoadRContainerMass>(create);
-  static LoadRContainerMass _defaultInstance;
+  @$pb.TagNumber(8)
+  $core.List<TimePoint> get co2 => $_getList(7);
 
-  @$pb.TagNumber(1)
-  $core.String get nfcId => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set nfcId($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasNfcId() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearNfcId() => clearField(1);
-}
+  @$pb.TagNumber(9)
+  $core.List<TimePoint> get waste => $_getList(8);
 
-class RContainerMass extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RContainerMass', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'containers'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nfcId')
-    ..pc<TimePoint>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mass', $pb.PbFieldType.PM, subBuilder: TimePoint.create)
-    ..hasRequiredFields = false
-  ;
-
-  RContainerMass._() : super();
-  factory RContainerMass({
-    $core.String nfcId,
-    $core.Iterable<TimePoint> mass,
-  }) {
-    final _result = create();
-    if (nfcId != null) {
-      _result.nfcId = nfcId;
-    }
-    if (mass != null) {
-      _result.mass.addAll(mass);
-    }
-    return _result;
-  }
-  factory RContainerMass.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory RContainerMass.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  RContainerMass clone() => RContainerMass()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  RContainerMass copyWith(void Function(RContainerMass) updates) => super.copyWith((message) => updates(message as RContainerMass)) as RContainerMass; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static RContainerMass create() => RContainerMass._();
-  RContainerMass createEmptyInstance() => create();
-  static $pb.PbList<RContainerMass> createRepeated() => $pb.PbList<RContainerMass>();
-  @$core.pragma('dart2js:noInline')
-  static RContainerMass getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<RContainerMass>(create);
-  static RContainerMass _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get nfcId => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set nfcId($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasNfcId() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearNfcId() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.List<TimePoint> get mass => $_getList(1);
-}
-
-class LoadRContainerImpact extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LoadRContainerImpact', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'containers'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nfcId')
-    ..hasRequiredFields = false
-  ;
-
-  LoadRContainerImpact._() : super();
-  factory LoadRContainerImpact({
-    $core.String nfcId,
-  }) {
-    final _result = create();
-    if (nfcId != null) {
-      _result.nfcId = nfcId;
-    }
-    return _result;
-  }
-  factory LoadRContainerImpact.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory LoadRContainerImpact.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  LoadRContainerImpact clone() => LoadRContainerImpact()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  LoadRContainerImpact copyWith(void Function(LoadRContainerImpact) updates) => super.copyWith((message) => updates(message as LoadRContainerImpact)) as LoadRContainerImpact; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static LoadRContainerImpact create() => LoadRContainerImpact._();
-  LoadRContainerImpact createEmptyInstance() => create();
-  static $pb.PbList<LoadRContainerImpact> createRepeated() => $pb.PbList<LoadRContainerImpact>();
-  @$core.pragma('dart2js:noInline')
-  static LoadRContainerImpact getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<LoadRContainerImpact>(create);
-  static LoadRContainerImpact _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get nfcId => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set nfcId($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasNfcId() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearNfcId() => clearField(1);
-}
-
-class RContainerImpact extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RContainerImpact', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'containers'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nfcId')
-    ..pc<TimePoint>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'waste', $pb.PbFieldType.PM, subBuilder: TimePoint.create)
-    ..pc<TimePoint>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'co2', $pb.PbFieldType.PM, subBuilder: TimePoint.create)
-    ..hasRequiredFields = false
-  ;
-
-  RContainerImpact._() : super();
-  factory RContainerImpact({
-    $core.String nfcId,
-    $core.Iterable<TimePoint> waste,
-    $core.Iterable<TimePoint> co2,
-  }) {
-    final _result = create();
-    if (nfcId != null) {
-      _result.nfcId = nfcId;
-    }
-    if (waste != null) {
-      _result.waste.addAll(waste);
-    }
-    if (co2 != null) {
-      _result.co2.addAll(co2);
-    }
-    return _result;
-  }
-  factory RContainerImpact.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory RContainerImpact.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  RContainerImpact clone() => RContainerImpact()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  RContainerImpact copyWith(void Function(RContainerImpact) updates) => super.copyWith((message) => updates(message as RContainerImpact)) as RContainerImpact; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static RContainerImpact create() => RContainerImpact._();
-  RContainerImpact createEmptyInstance() => create();
-  static $pb.PbList<RContainerImpact> createRepeated() => $pb.PbList<RContainerImpact>();
-  @$core.pragma('dart2js:noInline')
-  static RContainerImpact getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<RContainerImpact>(create);
-  static RContainerImpact _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get nfcId => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set nfcId($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasNfcId() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearNfcId() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.List<TimePoint> get waste => $_getList(1);
-
-  @$pb.TagNumber(3)
-  $core.List<TimePoint> get co2 => $_getList(2);
-}
-
-class LoadRContainerPurchases extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LoadRContainerPurchases', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'containers'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nfcId')
-    ..hasRequiredFields = false
-  ;
-
-  LoadRContainerPurchases._() : super();
-  factory LoadRContainerPurchases({
-    $core.String nfcId,
-  }) {
-    final _result = create();
-    if (nfcId != null) {
-      _result.nfcId = nfcId;
-    }
-    return _result;
-  }
-  factory LoadRContainerPurchases.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory LoadRContainerPurchases.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  LoadRContainerPurchases clone() => LoadRContainerPurchases()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  LoadRContainerPurchases copyWith(void Function(LoadRContainerPurchases) updates) => super.copyWith((message) => updates(message as LoadRContainerPurchases)) as LoadRContainerPurchases; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static LoadRContainerPurchases create() => LoadRContainerPurchases._();
-  LoadRContainerPurchases createEmptyInstance() => create();
-  static $pb.PbList<LoadRContainerPurchases> createRepeated() => $pb.PbList<LoadRContainerPurchases>();
-  @$core.pragma('dart2js:noInline')
-  static LoadRContainerPurchases getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<LoadRContainerPurchases>(create);
-  static LoadRContainerPurchases _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get nfcId => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set nfcId($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasNfcId() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearNfcId() => clearField(1);
-}
-
-class RContainerPurchases extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RContainerPurchases', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'containers'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nfcId')
-    ..pc<Purchase>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'purchases', $pb.PbFieldType.PM, subBuilder: Purchase.create)
-    ..hasRequiredFields = false
-  ;
-
-  RContainerPurchases._() : super();
-  factory RContainerPurchases({
-    $core.String nfcId,
-    $core.Iterable<Purchase> purchases,
-  }) {
-    final _result = create();
-    if (nfcId != null) {
-      _result.nfcId = nfcId;
-    }
-    if (purchases != null) {
-      _result.purchases.addAll(purchases);
-    }
-    return _result;
-  }
-  factory RContainerPurchases.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory RContainerPurchases.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  RContainerPurchases clone() => RContainerPurchases()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  RContainerPurchases copyWith(void Function(RContainerPurchases) updates) => super.copyWith((message) => updates(message as RContainerPurchases)) as RContainerPurchases; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static RContainerPurchases create() => RContainerPurchases._();
-  RContainerPurchases createEmptyInstance() => create();
-  static $pb.PbList<RContainerPurchases> createRepeated() => $pb.PbList<RContainerPurchases>();
-  @$core.pragma('dart2js:noInline')
-  static RContainerPurchases getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<RContainerPurchases>(create);
-  static RContainerPurchases _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get nfcId => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set nfcId($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasNfcId() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearNfcId() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.List<Purchase> get purchases => $_getList(1);
+  @$pb.TagNumber(10)
+  $core.List<Purchase> get purchases => $_getList(9);
 }
 
 class RContainer extends $pb.GeneratedMessage {
@@ -777,7 +495,7 @@ class Purchase extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Purchase', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'containers'), createEmptyInstance: create)
     ..a<$fixnum.Int64>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'date', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'item')
-    ..a<$core.double>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'price', $pb.PbFieldType.OF)
+    ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'weightG', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
@@ -785,7 +503,7 @@ class Purchase extends $pb.GeneratedMessage {
   factory Purchase({
     $fixnum.Int64 date,
     $core.String item,
-    $core.double price,
+    $core.int weightG,
   }) {
     final _result = create();
     if (date != null) {
@@ -794,8 +512,8 @@ class Purchase extends $pb.GeneratedMessage {
     if (item != null) {
       _result.item = item;
     }
-    if (price != null) {
-      _result.price = price;
+    if (weightG != null) {
+      _result.weightG = weightG;
     }
     return _result;
   }
@@ -839,12 +557,12 @@ class Purchase extends $pb.GeneratedMessage {
   void clearItem() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.double get price => $_getN(2);
+  $core.int get weightG => $_getIZ(2);
   @$pb.TagNumber(3)
-  set price($core.double v) { $_setFloat(2, v); }
+  set weightG($core.int v) { $_setSignedInt32(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasPrice() => $_has(2);
+  $core.bool hasWeightG() => $_has(2);
   @$pb.TagNumber(3)
-  void clearPrice() => clearField(3);
+  void clearWeightG() => clearField(3);
 }
 
