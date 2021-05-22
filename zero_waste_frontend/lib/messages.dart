@@ -127,7 +127,7 @@ class TxLoginMagicLink extends SocketTxMessage {
 class RxUserProfileData extends SocketRxMessage {
   static const String type = 'user-profile-data';
   final UserProfileData data = UserProfileData();
-  
+
 
   RxUserProfileData([SocketRxMessageData message]) : super(type, message);
 
@@ -140,6 +140,7 @@ class RxRContainers extends SocketRxMessage {
   static const String type = 'r-containers';
   final RContainers data = RContainers();
   final Duration cache = const Duration(days: 365, hours: 0, minutes: 0, seconds: 0);
+
 
   RxRContainers([SocketRxMessageData message]) : super(type, message);
 

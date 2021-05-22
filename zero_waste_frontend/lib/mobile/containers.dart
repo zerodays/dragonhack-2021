@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -116,7 +115,8 @@ class _ContainersState extends State<Containers> {
                                               .toDateTime(provider.containers
                                                   .data.containers.values
                                                   .map((c) => c.dateCreated)
-                                                  .reduce((a, b) => min(a, b))))
+                                                  .reduce(
+                                                      (a, b) => a < b ? a : b)))
                                           : '/',
                                       subtitle: 'oldest container',
                                       color: Pallette.primary,
@@ -127,10 +127,16 @@ class _ContainersState extends State<Containers> {
                             ),
                           ],
                         ),
-                        Container(
-                          padding: EdgeInsets.only(top: 36.0, bottom: 32.0),
-                          child: Column(
-                            children: containers,
+                        SingleChildScrollView(
+                          child: Container(
+                            padding: EdgeInsets.only(
+                                top: 36.0,
+                                bottom: 32.0,
+                                left: 16.0,
+                                right: 16.0),
+                            child: Column(
+                              children: containers,
+                            ),
                           ),
                         ),
                       ],

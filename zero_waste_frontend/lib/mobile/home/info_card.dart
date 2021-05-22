@@ -77,7 +77,6 @@ class InfoCard extends StatelessWidget {
               Container(height: 32.0),
               TextButton.icon(
                   onPressed: () {
-                    // TODO share.share
                   },
                   icon: const Icon(
                     Icons.share,
