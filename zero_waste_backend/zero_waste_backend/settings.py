@@ -1,4 +1,5 @@
 import os
+
 """
 Django settings for zero_waste_backend project.
 
@@ -16,7 +17,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -27,7 +27,6 @@ SECRET_KEY = os.getenv('secret_key', 'l(mm=8cax$tj4g4t^(+7(j4(*psv&jv)-nk08+#iw2
 DEBUG = os.getenv('debug', True)
 
 ALLOWED_HOSTS = os.getenv('allowed_hosts', '*').split(',')
-
 
 # Application definition
 
@@ -42,6 +41,8 @@ INSTALLED_APPS = [
     'proto_socket_django',
     'api',
     'authentication',
+    'sellers',
+    'waste_containers',
 ]
 
 MIDDLEWARE = [
@@ -74,7 +75,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'zero_waste_backend.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -84,7 +84,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -104,7 +103,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -117,7 +115,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/

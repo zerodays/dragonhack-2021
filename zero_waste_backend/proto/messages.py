@@ -1,12 +1,15 @@
-from betterproto import *
-import dataclasses
-from proto.sfiles import *
-from proto.zero_waste import *
-from proto.socket_api import *
-from abc import ABC
-from proto.authentication import *
 from proto.form_errors import *
+from proto.home import *
+from proto.sfiles import *
+from proto.socket_api import *
+from proto.authentication import *
 from proto.uploader import *
+from abc import ABC
+from proto.zero_waste import *
+from proto.containers import *
+import dataclasses
+from proto.rewards import *
+from betterproto import *
 
 
 class RxMessageData:
@@ -306,6 +309,111 @@ class TxUpgradeApiVersion(TxMessage):
 class TxUploadTask(TxMessage):
     type = 'upload-task'
     proto = UploadTask
+    auth_required = True
+    permissions = [None]
+
+
+class TxWasteContainers(TxMessage):
+    type = 'waste-containers'
+    proto = WasteContainers
+    auth_required = True
+    permissions = [None]
+
+
+class RxScanWasteContainer(RxMessage):
+    type = 'scan-container'
+    proto = ScanWasteContainer
+    auth_required = True
+    permissions = [None]
+
+
+class TxScannedWasteContainer(TxMessage):
+    type = 'scanned-container'
+    proto = ScannedWasteContainer
+    auth_required = True
+    permissions = [None]
+
+
+class RxLoadContainerInfo(RxMessage):
+    type = 'load-container-info'
+    proto = LoadContainerInfo
+    auth_required = True
+    permissions = [None]
+
+
+class TxContainerInfo(TxMessage):
+    type = 'container-info'
+    proto = ContainerInfo
+    auth_required = True
+    permissions = [None]
+
+
+class RxLoadContainerMass(RxMessage):
+    type = 'load-container-mass'
+    proto = LoadContainerMass
+    auth_required = True
+    permissions = [None]
+
+
+class TxContainerMass(TxMessage):
+    type = 'container-mass'
+    proto = ContainerMass
+    auth_required = True
+    permissions = [None]
+
+
+class RxLoadContainerImpact(RxMessage):
+    type = 'load-container-impact'
+    proto = LoadContainerImpact
+    auth_required = True
+    permissions = [None]
+
+
+class TxContainerImpact(TxMessage):
+    type = 'container-impact'
+    proto = ContainerImpact
+    auth_required = True
+    permissions = [None]
+
+
+class RxLoadContainerPurchases(RxMessage):
+    type = 'load-container-purchases'
+    proto = LoadContainerPurchases
+    auth_required = True
+    permissions = [None]
+
+
+class TxContainerPurchases(TxMessage):
+    type = 'container-purchases'
+    proto = ContainerPurchases
+    auth_required = True
+    permissions = [None]
+
+
+class RxGetHomeInfo(RxMessage):
+    type = 'get-home-info'
+    proto = GetHomeInfo
+    auth_required = True
+    permissions = [None]
+
+
+class TxHomeInfo(TxMessage):
+    type = 'home-info'
+    proto = HomeInfo
+    auth_required = True
+    permissions = [None]
+
+
+class RxLoadRewards(RxMessage):
+    type = 'load-rewards'
+    proto = LoadRewards
+    auth_required = True
+    permissions = [None]
+
+
+class TxRewards(TxMessage):
+    type = 'rewards'
+    proto = Rewards
     auth_required = True
     permissions = [None]
 

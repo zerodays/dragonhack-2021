@@ -2,43 +2,43 @@ syntax = "proto3";
 package containers;
 
 /*
-type = 'waste-containers'
+type = 'r-containers'
 origin = server
  */
-message WasteContainers {
-  map<string, WasteContainer> containers = 1;
+message RContainers {
+  map<string, RContainer> containers = 1;
 }
 
 /*
-type = 'scan-container'
+type = 'scan-r-container'
 origin = client
  */
-message ScanWasteContainer {
+message ScanRContainer {
   string nfc_id = 1;
 }
 
 /*
-type = 'scanned-container'
+type = 'scanned-r-container'
 origin = server
  */
-message ScannedWasteContainer {
+message ScannedRContainer {
   string nfc_id = 1;
   uint64 date_created = 2;
 }
 
 /*
-type = 'load-container-info'
+type = 'load-r-container-info'
 origin = client
  */
-message LoadContainerInfo {
+message LoadRContainerInfo {
   string nfc_id = 1;
 }
 
 /*
-type = 'container-info'
+type = 'r-container-info'
 origin = server
  */
-message ContainerInfo {
+message RContainerInfo {
   string nfc_id = 1;
   string origin_seller = 2;
   string origin_location = 3;
@@ -48,59 +48,59 @@ message ContainerInfo {
 }
 
 /*
-type = 'load-container-mass'
+type = 'load-r-container-mass'
 origin = client
  */
-message LoadContainerMass {
+message LoadRContainerMass {
   string nfc_id = 1;
 }
 
 /*
-type = 'container-mass'
+type = 'r-container-mass'
 origin = server
  */
-message ContainerMass {
+message RContainerMass {
   string nfc_id = 1;
   repeated TimePoint mass = 2;
 }
 
 /*
-type = 'load-container-impact'
+type = 'load-r-container-impact'
 origin = client
  */
-message LoadContainerImpact {
+message LoadRContainerImpact {
   string nfc_id = 1;
 }
 
 /*
-type = 'container-impact'
+type = 'r-container-impact'
 origin = server
  */
-message ContainerImpact {
+message RContainerImpact {
   string nfc_id = 1;
   repeated TimePoint waste = 2;
   repeated TimePoint co2 = 3;
 }
 
 /*
-type = 'load-container-purchases'
+type = 'load-r-container-purchases'
 origin = client
  */
-message LoadContainerPurchases {
+message LoadRContainerPurchases {
   string nfc_id = 1;
 }
 
 /*
-type = 'container-purchases'
+type = 'r-container-purchases'
 origin = server
  */
-message ContainerPurchases {
+message RContainerPurchases {
   string nfc_id = 1;
   repeated Purchase purchases = 2;
 }
 
 
-message WasteContainer {
+message RContainer {
   string nfc_id = 1;
   string name = 2;
   uint64 date_created = 3;
