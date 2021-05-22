@@ -57,5 +57,7 @@ async def loop():
 
             await sock.send(json.dumps(data))
 
+            time.sleep(0.1)
+
 
 asyncio.get_event_loop().run_until_complete(loop())
