@@ -1,11 +1,14 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gm5_utils/mixins/subsctiptions_mixin.dart';
-import 'package:moor/moor.dart' hide Column;
 import 'package:moor/ffi.dart';
+import 'package:moor/moor.dart' hide Column;
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:zero_waste_frontend/common/providers/home_provider.dart';
 import 'package:zero_waste_frontend/common/theme.dart';
 import 'package:zero_waste_frontend/mobile/router.dart';
 
@@ -31,27 +34,31 @@ class ZeroWasteMobile extends StatefulWidget {
   }
 }
 
-class _ZeroWasteMobileState extends State<ZeroWasteMobile> with SubscriptionsMixin, WidgetsBindingObserver {
+class _ZeroWasteMobileState extends State<ZeroWasteMobile>
+    with SubscriptionsMixin, WidgetsBindingObserver {
   static GlobalKey<NavigatorState> navigator = GlobalKey();
 
   Uri initialLink;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: () {
-        WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();
-      },
-      child: MaterialApp(
-        navigatorKey: navigator,
-        title: 'Zero Waste',
-        theme: zeroWasteTheme.copyWith(
-          textTheme: zeroWasteTheme.textTheme.copyWith(),
-          brightness: Brightness.dark,
+    return MultiProvider(
+      providers: [ChangeNotifierProvider(create: (context) => HomeProvider())],
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () {
+          WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();
+        },
+        child: MaterialApp(
+          navigatorKey: navigator,
+          title: 'Zero Waste',
+          theme: zeroWasteTheme.copyWith(
+            textTheme: zeroWasteTheme.textTheme.copyWith(),
+            brightness: Brightness.dark,
+          ),
+          onGenerateRoute: FluroRouter.router.generator,
+          initialRoute: '/',
         ),
-        onGenerateRoute: FluroRouter.router.generator,
-        initialRoute: '/',
       ),
     );
   }
@@ -72,7 +79,6 @@ class _ZeroWasteMobileState extends State<ZeroWasteMobile> with SubscriptionsMix
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.resumed) {
-    }
+    if (state == AppLifecycleState.resumed) {}
   }
 }

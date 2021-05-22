@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:zero_waste_frontend/common/components/info_card.dart';
 import 'package:zero_waste_frontend/common/globals.dart';
+import 'package:zero_waste_frontend/mobile/home/info_card.dart';
 
 const textShadow = Shadow(
   blurRadius: 2.0,

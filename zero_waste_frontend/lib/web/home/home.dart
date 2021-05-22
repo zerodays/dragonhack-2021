@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gm5_utils/components/delayed_builder.dart';
 import 'package:provider/provider.dart';
-import 'home_provider.dart';
 
 class Home extends StatefulWidget {
   static const String route = '/';
@@ -13,7 +12,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    final provider = context.watch<HomeProvider>();
+    // final provider = context.watch<HomeP>();
     return Scaffold(
       body: DelayedBuilder(
         stillLoading: provider.loading,
