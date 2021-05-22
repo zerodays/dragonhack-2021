@@ -45,60 +45,11 @@ message RContainerInfo {
   int32 food_g = 4;
   int32 waste_saved_g = 5;
   int32 co2_saved_g = 6;
+  repeated TimePoint mass = 7;
+  repeated TimePoint co2 = 8;
+  repeated TimePoint waste = 9;
+  repeated Purchase purchases = 10;
 }
-
-/*
-type = 'load-r-container-mass'
-origin = client
- */
-message LoadRContainerMass {
-  string nfc_id = 1;
-}
-
-/*
-type = 'r-container-mass'
-origin = server
- */
-message RContainerMass {
-  string nfc_id = 1;
-  repeated TimePoint mass = 2;
-}
-
-/*
-type = 'load-r-container-impact'
-origin = client
- */
-message LoadRContainerImpact {
-  string nfc_id = 1;
-}
-
-/*
-type = 'r-container-impact'
-origin = server
- */
-message RContainerImpact {
-  string nfc_id = 1;
-  repeated TimePoint waste = 2;
-  repeated TimePoint co2 = 3;
-}
-
-/*
-type = 'load-r-container-purchases'
-origin = client
- */
-message LoadRContainerPurchases {
-  string nfc_id = 1;
-}
-
-/*
-type = 'r-container-purchases'
-origin = server
- */
-message RContainerPurchases {
-  string nfc_id = 1;
-  repeated Purchase purchases = 2;
-}
-
 
 message RContainer {
   string nfc_id = 1;
@@ -114,5 +65,5 @@ message TimePoint {
 message Purchase {
   uint64 date = 1;
   string item = 2;
-  float price = 3;
+  int32 weight_g = 3;
 }

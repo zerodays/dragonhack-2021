@@ -18,7 +18,7 @@ class GetHomeInfo(betterproto.Message):
 class HomeInfo(betterproto.Message):
     """type = 'home-info'origin = serverclient cache = years(1)"""
 
-    n_containers: int = betterproto.int32_field(1)
+    n_r_containers: int = betterproto.int32_field(1)
     food_g: int = betterproto.int32_field(2)
     waste_saved_g: int = betterproto.int32_field(3)
     co2_saved_g: int = betterproto.int32_field(4)

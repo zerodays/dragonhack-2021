@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'api',
     'authentication',
     'sellers',
-    'waste_containers',
+    'containers',
 ]
 
 MIDDLEWARE = [

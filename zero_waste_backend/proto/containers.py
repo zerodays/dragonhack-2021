@@ -8,96 +8,54 @@ import betterproto
 
 
 @dataclass
-class WasteContainers(betterproto.Message):
-    """type = 'waste-containers'origin = server"""
+class RContainers(betterproto.Message):
+    """type = 'r-containers'origin = server"""
 
-    containers: Dict[str, "WasteContainer"] = betterproto.map_field(
+    containers: Dict[str, "RContainer"] = betterproto.map_field(
         1, betterproto.TYPE_STRING, betterproto.TYPE_MESSAGE
     )
 
 
 @dataclass
-class ScanWasteContainer(betterproto.Message):
-    """type = 'scan-container'origin = client"""
+class ScanRContainer(betterproto.Message):
+    """type = 'scan-r-container'origin = client"""
 
     nfc_id: str = betterproto.string_field(1)
 
 
 @dataclass
-class ScannedWasteContainer(betterproto.Message):
-    """type = 'scanned-container'origin = server"""
+class ScannedRContainer(betterproto.Message):
+    """type = 'scanned-r-container'origin = server"""
 
     nfc_id: str = betterproto.string_field(1)
     date_created: int = betterproto.uint64_field(2)
 
 
 @dataclass
-class LoadContainerInfo(betterproto.Message):
-    """type = 'load-container-info'origin = client"""
+class LoadRContainerInfo(betterproto.Message):
+    """type = 'load-r-container-info'origin = client"""
 
     nfc_id: str = betterproto.string_field(1)
 
 
 @dataclass
-class ContainerInfo(betterproto.Message):
-    """type = 'container-info'origin = server"""
+class RContainerInfo(betterproto.Message):
+    """type = 'r-container-info'origin = server"""
 
     nfc_id: str = betterproto.string_field(1)
-    origin_company: str = betterproto.string_field(2)
+    origin_seller: str = betterproto.string_field(2)
     origin_location: str = betterproto.string_field(3)
     food_g: int = betterproto.int32_field(4)
     waste_saved_g: int = betterproto.int32_field(5)
     co2_saved_g: int = betterproto.int32_field(6)
+    mass: List["TimePoint"] = betterproto.message_field(7)
+    co2: List["TimePoint"] = betterproto.message_field(8)
+    waste: List["TimePoint"] = betterproto.message_field(9)
+    purchases: List["Purchase"] = betterproto.message_field(10)
 
 
 @dataclass
-class LoadContainerMass(betterproto.Message):
-    """type = 'load-container-mass'origin = client"""
-
-    nfc_id: str = betterproto.string_field(1)
-
-
-@dataclass
-class ContainerMass(betterproto.Message):
-    """type = 'container-mass'origin = server"""
-
-    nfc_id: str = betterproto.string_field(1)
-    mass: List["TimePoint"] = betterproto.message_field(2)
-
-
-@dataclass
-class LoadContainerImpact(betterproto.Message):
-    """type = 'load-container-impact'origin = client"""
-
-    nfc_id: str = betterproto.string_field(1)
-
-
-@dataclass
-class ContainerImpact(betterproto.Message):
-    """type = 'container-impact'origin = server"""
-
-    nfc_id: str = betterproto.string_field(1)
-    waste: List["TimePoint"] = betterproto.message_field(2)
-    co2: List["TimePoint"] = betterproto.message_field(3)
-
-
-@dataclass
-class LoadContainerPurchases(betterproto.Message):
-    """type = 'load-container-purchases'origin = client"""
-
-    nfc_id: str = betterproto.string_field(1)
-
-
-@dataclass
-class ContainerPurchases(betterproto.Message):
-    """type = 'container-purchases'origin = server"""
-
-    nfc_id: str = betterproto.string_field(1)
-    purchases: List["Purchase"] = betterproto.message_field(2)
-
-
-@dataclass
-class WasteContainer(betterproto.Message):
+class RContainer(betterproto.Message):
     nfc_id: str = betterproto.string_field(1)
     name: str = betterproto.string_field(2)
     date_created: int = betterproto.uint64_field(3)
@@ -113,4 +71,4 @@ class TimePoint(betterproto.Message):
 class Purchase(betterproto.Message):
     date: int = betterproto.uint64_field(1)
     item: str = betterproto.string_field(2)
-    price: float = betterproto.float_field(3)
+    weight_g: int = betterproto.int32_field(3)

@@ -10,7 +10,7 @@ import betterproto
 class UploadStartSlot(betterproto.Message):
     """
     type = 'upload-start'origin = serverclient cache = days(7)client cache_keys
-    = text('localKey')
+    = text('local_key')
     """
 
     key: str = betterproto.string_field(1)
@@ -49,7 +49,7 @@ class UploadedFile(betterproto.Message):
 class UploadStart(betterproto.Message):
     """
     type = 'upload-start'origin = clientclient cache = years(1)client
-    cache_keys = text('localKey')
+    cache_keys = text('local_key')
     """
 
     local_key: str = betterproto.string_field(1)

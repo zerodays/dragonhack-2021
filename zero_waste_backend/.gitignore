@@ -73,7 +73,5 @@ fabric.properties
 
 venv
 build
-settings_local.py
-amzs_cvv/settings.py
 __pycache__
 *.pyc
