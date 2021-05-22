@@ -1,0 +1,1 @@
+final nonEmptyValidator = (text) => text.isEmpty ? 'Field is required' : null;
