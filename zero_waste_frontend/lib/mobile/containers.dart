@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gm5_utils/components/delayed_builder.dart';
@@ -9,6 +8,7 @@ import 'package:zero_waste_frontend/common/components/info_text.dart';
 import 'package:zero_waste_frontend/common/components/main_layout.dart';
 import 'package:zero_waste_frontend/common/globals.dart';
 import 'package:zero_waste_frontend/common/providers/home_provider.dart';
+import 'package:zero_waste_frontend/mobile/container_details.dart';
 
 class Containers extends StatefulWidget {
   const Containers({Key key}) : super(key: key);
@@ -25,7 +25,11 @@ class _ContainersState extends State<Containers> {
     List<Widget> containers = provider.containers.data.containers.values
         .map((c) => CardButton(
               text: c.name,
-              onClick: () {},
+              onClick: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ContainerDetails(container: c)),
+              ),
               color: Pallette.primary,
               leadingIcon: Icons.shopping_bag,
             ))
