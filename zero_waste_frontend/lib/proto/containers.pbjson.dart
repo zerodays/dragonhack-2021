@@ -65,7 +65,7 @@ const ContainerInfo$json = const {
   '1': 'ContainerInfo',
   '2': const [
     const {'1': 'nfc_id', '3': 1, '4': 1, '5': 9, '10': 'nfcId'},
-    const {'1': 'origin_company', '3': 2, '4': 1, '5': 9, '10': 'originCompany'},
+    const {'1': 'origin_seller', '3': 2, '4': 1, '5': 9, '10': 'originSeller'},
     const {'1': 'origin_location', '3': 3, '4': 1, '5': 9, '10': 'originLocation'},
     const {'1': 'food_g', '3': 4, '4': 1, '5': 5, '10': 'foodG'},
     const {'1': 'waste_saved_g', '3': 5, '4': 1, '5': 5, '10': 'wasteSavedG'},
@@ -74,7 +74,7 @@ const ContainerInfo$json = const {
 };
 
 /// Descriptor for `ContainerInfo`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List containerInfoDescriptor = $convert.base64Decode('Cg1Db250YWluZXJJbmZvEhUKBm5mY19pZBgBIAEoCVIFbmZjSWQSJQoOb3JpZ2luX2NvbXBhbnkYAiABKAlSDW9yaWdpbkNvbXBhbnkSJwoPb3JpZ2luX2xvY2F0aW9uGAMgASgJUg5vcmlnaW5Mb2NhdGlvbhIVCgZmb29kX2cYBCABKAVSBWZvb2RHEiIKDXdhc3RlX3NhdmVkX2cYBSABKAVSC3dhc3RlU2F2ZWRHEh4KC2NvMl9zYXZlZF9nGAYgASgFUgljbzJTYXZlZEc=');
+final $typed_data.Uint8List containerInfoDescriptor = $convert.base64Decode('Cg1Db250YWluZXJJbmZvEhUKBm5mY19pZBgBIAEoCVIFbmZjSWQSIwoNb3JpZ2luX3NlbGxlchgCIAEoCVIMb3JpZ2luU2VsbGVyEicKD29yaWdpbl9sb2NhdGlvbhgDIAEoCVIOb3JpZ2luTG9jYXRpb24SFQoGZm9vZF9nGAQgASgFUgVmb29kRxIiCg13YXN0ZV9zYXZlZF9nGAUgASgFUgt3YXN0ZVNhdmVkRxIeCgtjbzJfc2F2ZWRfZxgGIAEoBVIJY28yU2F2ZWRH');
 @$core.Deprecated('Use loadContainerMassDescriptor instead')
 const LoadContainerMass$json = const {
   '1': 'LoadContainerMass',

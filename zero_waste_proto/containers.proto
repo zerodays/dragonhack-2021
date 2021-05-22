@@ -40,7 +40,7 @@ origin = server
  */
 message ContainerInfo {
   string nfc_id = 1;
-  string origin_company = 2;
+  string origin_seller = 2;
   string origin_location = 3;
   int32 food_g = 4;
   int32 waste_saved_g = 5;

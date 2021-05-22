@@ -209,7 +209,7 @@ class LoadContainerInfo extends $pb.GeneratedMessage {
 class ContainerInfo extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ContainerInfo', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'containers'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nfcId')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'originCompany')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'originSeller')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'originLocation')
     ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'foodG', $pb.PbFieldType.O3)
     ..a<$core.int>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'wasteSavedG', $pb.PbFieldType.O3)
@@ -220,7 +220,7 @@ class ContainerInfo extends $pb.GeneratedMessage {
   ContainerInfo._() : super();
   factory ContainerInfo({
     $core.String nfcId,
-    $core.String originCompany,
+    $core.String originSeller,
     $core.String originLocation,
     $core.int foodG,
     $core.int wasteSavedG,
@@ -230,8 +230,8 @@ class ContainerInfo extends $pb.GeneratedMessage {
     if (nfcId != null) {
       _result.nfcId = nfcId;
     }
-    if (originCompany != null) {
-      _result.originCompany = originCompany;
+    if (originSeller != null) {
+      _result.originSeller = originSeller;
     }
     if (originLocation != null) {
       _result.originLocation = originLocation;
@@ -278,13 +278,13 @@ class ContainerInfo extends $pb.GeneratedMessage {
   void clearNfcId() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get originCompany => $_getSZ(1);
+  $core.String get originSeller => $_getSZ(1);
   @$pb.TagNumber(2)
-  set originCompany($core.String v) { $_setString(1, v); }
+  set originSeller($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasOriginCompany() => $_has(1);
+  $core.bool hasOriginSeller() => $_has(1);
   @$pb.TagNumber(2)
-  void clearOriginCompany() => clearField(2);
+  void clearOriginSeller() => clearField(2);
 
   @$pb.TagNumber(3)
   $core.String get originLocation => $_getSZ(2);
