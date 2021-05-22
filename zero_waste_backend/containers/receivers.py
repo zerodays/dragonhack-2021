@@ -45,3 +45,11 @@ class ContainersReceiver(psd.FPSReceiver):
         response.proto.nfc_id = container.nfc_id
         response.proto.date_created = psd.to_timestamp(container.date_created)
         self.consumer.send_message(response)
+
+    @psd.receive(auth=False)
+    def scan_container(self, message: pb.RxScaleMeasurement):
+        update = pb.TxScaleUpdate()
+        update.proto.nfc_id = message.proto.nfc_id
+        update.proto.weight_g = message.proto.weight_g
+        from api.consumers import BaseConsumer
+        self.consumer.broadcast(BaseConsumer.APP_GROUP, update)

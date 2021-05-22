@@ -1,16 +1,17 @@
-from proto.rewards import *
-from proto.sellers import *
-import dataclasses
 from proto.socket_api import *
-from proto.home import *
-from proto.containers import *
-from betterproto import *
-from proto.form_errors import *
-from proto.uploader import *
-from abc import ABC
+import dataclasses
 from proto.sfiles import *
+from proto.uploader import *
+from proto.home import *
+from proto.sellers import *
+from proto.rewards import *
+from proto.scale import *
+from abc import ABC
 from proto.authentication import *
+from proto.form_errors import *
+from proto.containers import *
 from proto.zero_waste import *
+from betterproto import *
 
 
 class RxMessageData:
@@ -373,6 +374,20 @@ class RxLoadRewards(RxMessage):
 class TxRewards(TxMessage):
     type = 'rewards'
     proto = Rewards
+    auth_required = True
+    permissions = [None]
+
+
+class TxScaleUpdate(TxMessage):
+    type = 'scale-update'
+    proto = ScaleUpdate
+    auth_required = True
+    permissions = [None]
+
+
+class RxScaleMeasurement(RxMessage):
+    type = 'scale-measurement'
+    proto = ScaleMeasurement
     auth_required = True
     permissions = [None]
 
