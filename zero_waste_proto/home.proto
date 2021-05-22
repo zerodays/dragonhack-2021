@@ -1,0 +1,23 @@
+syntax = "proto3";
+package home;
+
+/*
+type = 'get-home-info'
+origin = client
+ */
+message GetHomeInfo {
+  repeated string nfc_ids = 1;
+}
+
+/*
+type = 'home-info'
+origin = server
+client cache = years(1)
+ */
+message HomeInfo {
+  int32 n_containers = 1;
+  int32 food_g = 2;
+  int32 waste_saved_g = 3;
+  int32 co2_saved_g = 4;
+  int32 n_rewards = 5;
+}

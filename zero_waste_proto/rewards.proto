@@ -1,0 +1,24 @@
+syntax = "proto3";
+package rewards;
+
+/*
+type = 'load-rewards'
+origin = client
+ */
+message LoadRewards {
+  repeated string nfc_ids = 1;
+}
+
+/*
+type = 'rewards'
+origin = server
+client cache = years(1)
+ */
+message Rewards {
+  repeated Reward rewards = 1;
+}
+
+message Reward {
+  string reason = 1;
+  string reward = 2;
+}

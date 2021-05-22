@@ -2,34 +2,117 @@ syntax = "proto3";
 package containers;
 
 /*
-type = ''
-origin = client
- */
-message GetMagicLink {
-  string mail = 1;
-}
-
-/*
-type = 'login-magic-link'
-origin = client
- */
-message LoginMagicLink {
-  string token = 1;
-}
-
-/*
-type = 'login-magic-link-status'
+type = 'waste-containers'
 origin = server
  */
-message LoginMagicLinkStatus {
-  string status = 1;
-  bool error = 2;
+message WasteContainers {
+  map<string, WasteContainer> containers = 1;
 }
 
 /*
-type = 'user-profile-data'
+type = 'scan-container'
+origin = client
+ */
+message ScanWasteContainer {
+  string nfc_id = 1;
+}
+
+/*
+type = 'scanned-container'
 origin = server
  */
-message UserProfileData {
-  string name = 1;
+message ScannedWasteContainer {
+  string nfc_id = 1;
+  uint64 date_created = 2;
+}
+
+/*
+type = 'load-container-info'
+origin = client
+ */
+message LoadContainerInfo {
+  string nfc_id = 1;
+}
+
+/*
+type = 'container-info'
+origin = server
+ */
+message ContainerInfo {
+  string nfc_id = 1;
+  string origin_company = 2;
+  string origin_location = 3;
+  int32 food_g = 4;
+  int32 waste_saved_g = 5;
+  int32 co2_saved_g = 6;
+}
+
+/*
+type = 'load-container-mass'
+origin = client
+ */
+message LoadContainerMass {
+  string nfc_id = 1;
+}
+
+/*
+type = 'container-mass'
+origin = server
+ */
+message ContainerMass {
+  string nfc_id = 1;
+  repeated TimePoint mass = 2;
+}
+
+/*
+type = 'load-container-impact'
+origin = client
+ */
+message LoadContainerImpact {
+  string nfc_id = 1;
+}
+
+/*
+type = 'container-impact'
+origin = server
+ */
+message ContainerImpact {
+  string nfc_id = 1;
+  repeated TimePoint waste = 2;
+  repeated TimePoint co2 = 3;
+}
+
+/*
+type = 'load-container-purchases'
+origin = client
+ */
+message LoadContainerPurchases {
+  string nfc_id = 1;
+}
+
+/*
+type = 'container-purchases'
+origin = server
+ */
+message ContainerPurchases {
+  string nfc_id = 1;
+  repeated Purchase purchases = 2;
+}
+
+
+message WasteContainer {
+  string nfc_id = 1;
+  string name = 2;
+  uint64 date_created = 3;
+}
+
+message TimePoint {
+  uint64 time = 1;
+  float value = 2;
+}
+
+message Purchase {
+  uint64 date = 1;
+  string item = 2;
+  float price = 3;
 }
