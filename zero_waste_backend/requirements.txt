@@ -1,0 +1,6 @@
+betterproto==1.2.5
+channels==3.0.3
+daphne==3.0.1
+Django==3.1.7
+proto-socket-django@ git+https://github.com/vidklopcic/proto_socket_django@194036535cf6d2801cc4167943c5ac5618c6d422
+protobuf==3.14.0
