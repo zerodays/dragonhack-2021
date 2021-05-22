@@ -1,15 +1,19 @@
 import 'dart:async';
+
 import 'package:flutter/foundation.dart';
-import 'package:intl/date_symbol_data_local.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
 import 'package:gm5_utils/components/delayed_builder.dart';
 import 'package:gm5_utils/components/loading_overlay.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
+
 import 'common/api/authentication.dart';
 import 'common/globals.dart';
 import 'common/providers/authentication_provider.dart';
-import 'ui_stub.dart' if (dart.library.io) 'mobile/ui_mobile.dart' if (dart.library.html) 'web/ui_web.dart';
+import 'ui_stub.dart'
+    if (dart.library.io) 'mobile/ui_mobile.dart'
+    if (dart.library.html) 'web/ui_web.dart';
 
 void main() async {
   // ignore: close_sinks
@@ -63,7 +67,8 @@ void main() async {
       ],
       child: NotificationListener(
           onNotification: (scrollNotification) {
-            if (scrollNotification is ScrollUpdateNotification || scrollNotification is ScrollEndNotification) {
+            if (scrollNotification is ScrollUpdateNotification ||
+                scrollNotification is ScrollEndNotification) {
               _scrollUpdates.add(scrollNotification.metrics);
             }
             return false;
