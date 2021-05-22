@@ -4,6 +4,7 @@ package containers;
 /*
 type = 'r-containers'
 origin = server
+client cache = years(1)
  */
 message RContainers {
   map<string, RContainer> containers = 1;

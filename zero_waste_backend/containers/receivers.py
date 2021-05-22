@@ -4,6 +4,7 @@ import proto_socket_django as psd
 from django.db.models import QuerySet
 
 import proto.messages as pb
+from authentication.models import UserGroups
 from containers.models import RContainer
 from containers.savings_calculator import SavingsCalculator
 from sellers.models import Seller
@@ -47,9 +48,8 @@ class ContainersReceiver(psd.FPSReceiver):
         self.consumer.send_message(response)
 
     @psd.receive(auth=False)
-    def scan_container(self, message: pb.RxScaleMeasurement):
+    def scale_measurement(self, message: pb.RxScaleMeasurement):
         update = pb.TxScaleUpdate()
         update.proto.nfc_id = message.proto.nfc_id
         update.proto.weight_g = message.proto.weight_g
-        from api.consumers import BaseConsumer
-        self.consumer.broadcast(BaseConsumer.APP_GROUP, update)
+        self.consumer.broadcast(UserGroups.authenticated, update)

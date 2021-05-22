@@ -17,6 +17,13 @@ class Product(api_models.ApiModel):
     description = models.TextField(default='', blank=True)
     price_per_g = models.FloatField()
 
+    def to_proto(self) -> pb.Product:
+        return pb.Product(
+            id=self.id,
+            name=self.name,
+            price_per_g=self.price_per_g
+        )
+
     def __str__(self):
         return f'{self.seller.name} - {self.name}'
 

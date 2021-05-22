@@ -11,3 +11,26 @@ message NewPurchase {
   int32 weight_g = 3;
 }
 
+/*
+type = 'load-product-list'
+origin = client
+ */
+message LoadProductList {
+}
+
+/*
+type = 'product-list'
+origin = server
+ */
+message ProductList {
+  repeated Product products = 1;
+}
+
+message Product {
+  string id = 1;
+  string name = 2;
+  float price_per_g = 3;
+}
+
+
+

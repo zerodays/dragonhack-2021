@@ -12,7 +12,6 @@ message LoadRewards {
 /*
 type = 'rewards'
 origin = server
-client cache = years(1)
  */
 message Rewards {
   repeated Reward rewards = 1;

@@ -31,8 +31,17 @@ class SellersReceiver(psd.FPSReceiver):
             weight_g=message.proto.weight_g,
         )
 
+        container.weight_sum_g += message.proto.weight_g
+        container.save()
+
         Reward.objects.create(
             container=container,
             reason=random.choice(['OLDEST CONTAINER IN THE UNIVERSE', '100 KG OF FOOD', 'LUCKY DAY REWARD']),
             reward=random.choice(['10% DISCOUNT ON BEVERAGES', '2 FOR 1 FOR MAGIC POWDER', 'FREE FORTUNE COOKIE'])
         )
+
+    @psd.receive(auth=False)
+    def load_product_list(self, message: pb.RxLoadProductList):
+        response = pb.TxProductList()
+        response.proto.products = [p.to_proto() for p in Product.objects.all()]
+        self.consumer.send_message(response)

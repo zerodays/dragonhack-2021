@@ -8,7 +8,7 @@ from authentication.utils import AuthenticationUtils
 
 
 class UserGroups:
-    pass
+    authenticated = 'zero-waste-authenticated'
 
 
 class User(AbstractUser):
