@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 abstract class Pallette {
-  static const MaterialColor primary = MaterialColor(0xFF098347, <int, Color>{
+  static const MaterialColor primary = MaterialColor(0xFF1D80A9, <int, Color>{
     50: Color(0xFFE4F0F5),
     100: Color(0xFFBBD9E5),
     200: Color(0xFF8EC0D4),
@@ -37,6 +37,9 @@ abstract class Pallette {
   static const Color dialogBarrierWhite = Colors.white70;
 
   static const Color highlight = Color(0x0AFFFFFF);
+
+  static final backgroundGrey = Colors.grey.shade100;
+  static final almostWhite = Colors.grey.shade50;
 }
 
 String HOST = env["API_HOST"];
