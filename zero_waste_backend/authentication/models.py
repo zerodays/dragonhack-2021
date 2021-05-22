@@ -10,6 +10,7 @@ from authentication.utils import AuthenticationUtils
 class UserGroups:
     pass
 
+
 class User(AbstractUser):
     def has_group(self, name: str) -> bool:
         return self.groups.filter(name=name).exists()

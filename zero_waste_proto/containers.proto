@@ -1,0 +1,35 @@
+syntax = "proto3";
+package containers;
+
+/*
+type = ''
+origin = client
+ */
+message GetMagicLink {
+  string mail = 1;
+}
+
+/*
+type = 'login-magic-link'
+origin = client
+ */
+message LoginMagicLink {
+  string token = 1;
+}
+
+/*
+type = 'login-magic-link-status'
+origin = server
+ */
+message LoginMagicLinkStatus {
+  string status = 1;
+  bool error = 2;
+}
+
+/*
+type = 'user-profile-data'
+origin = server
+ */
+message UserProfileData {
+  string name = 1;
+}
