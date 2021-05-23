@@ -5,16 +5,16 @@ import 'package:provider/provider.dart';
 import 'package:zero_waste_frontend/common/globals.dart';
 import 'package:zero_waste_frontend/common/theme.dart';
 import 'package:zero_waste_frontend/web/router.dart';
-import 'home/home_provider.dart';
 import 'login/login.dart';
 
 Future<Widget> get application async {
-  return MultiProvider(
-    providers: [
-      ChangeNotifierProvider(create: (context) => HomeProvider()),
-    ],
-    child: ZeroWasteWeb(),
-  );
+  return ZeroWasteWeb();
+  // return MultiProvider(
+  //   providers: [
+  //     ChangeNotifierProvider(create: (context) => HomeProvider()),
+  //   ],
+  //   child: ZeroWasteWeb(),
+  // );
 }
 
 class ZeroWasteWeb extends StatefulWidget {
