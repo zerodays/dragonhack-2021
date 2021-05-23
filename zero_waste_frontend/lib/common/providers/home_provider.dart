@@ -5,6 +5,7 @@ import 'package:zero_waste_frontend/common/globals.dart';
 import 'package:zero_waste_frontend/messages.dart';
 import 'package:zero_waste_frontend/proto/containers.pb.dart';
 import 'package:zero_waste_frontend/proto/home.pb.dart';
+import 'package:zero_waste_frontend/proto/rewards.pb.dart';
 
 class HomeProvider extends ChangeNotifier with SubscriptionsMixin {
   HomeInfo homeInfo;

@@ -10,6 +10,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste_frontend/common/providers/container_provider.dart';
 import 'package:zero_waste_frontend/common/providers/home_provider.dart';
+import 'package:zero_waste_frontend/common/providers/reward_provider.dart';
 import 'package:zero_waste_frontend/common/theme.dart';
 import 'package:zero_waste_frontend/mobile/router.dart';
 
@@ -46,7 +47,8 @@ class _ZeroWasteMobileState extends State<ZeroWasteMobile>
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => HomeProvider()),
-        ChangeNotifierProvider(create: (context) => ContainerProvider())
+        ChangeNotifierProvider(create: (context) => ContainerProvider()),
+        ChangeNotifierProvider(create: (context) => RewardProvider())
       ],
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,

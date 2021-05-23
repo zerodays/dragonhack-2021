@@ -3,10 +3,12 @@ import 'package:gm5_utils/components/delayed_builder.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste_frontend/common/globals.dart';
 import 'package:zero_waste_frontend/common/providers/home_provider.dart';
+import 'package:zero_waste_frontend/common/providers/reward_provider.dart';
 import 'package:zero_waste_frontend/mobile/containers.dart';
 
 import '../../common/components/card_button.dart';
 import '../../common/components/info_text.dart';
+import '../rewards.dart';
 
 class InfoCard extends StatelessWidget {
   const InfoCard({Key key}) : super(key: key);
@@ -62,22 +64,24 @@ class InfoCard extends StatelessWidget {
                 text: 'My containers',
                 leadingIcon: Icons.shopping_bag,
                 color: Pallette.primary,
-                count: 3,
+                count: provider.containers?.data?.containers?.length ?? 0,
                 onClick: () => Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => Containers()),
                 ),
               ),
               CardButton(
-                text: 'Rewards',
-                leadingIcon: Icons.star,
-                color: Pallette.accent,
-                count: 2,
-              ),
+                  text: 'Rewards',
+                  leadingIcon: Icons.star,
+                  color: Pallette.accent,
+                  count: context.read<RewardProvider>()?.rewards?.length ?? 0,
+                  onClick: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Rewards()),
+                      )),
               Container(height: 32.0),
               TextButton.icon(
-                  onPressed: () {
-                  },
+                  onPressed: () {},
                   icon: const Icon(
                     Icons.share,
                     color: Pallette.primary,
