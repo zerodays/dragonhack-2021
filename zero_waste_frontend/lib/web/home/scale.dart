@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zero_waste_frontend/common/globals.dart';
 import 'package:zero_waste_frontend/web/home/rewards.dart';
+import 'package:zero_waste_frontend/web/home/stats.dart';
 
 class Scale extends StatefulWidget {
   const Scale({Key key}) : super(key: key);
@@ -85,7 +86,7 @@ class _ScaleState extends State<Scale> {
                       Text('REWARDS', style: columnNameStyle,)
                   ),
                 ),
-                Container(width: 16,),
+                Container(width: 32,),
                 Expanded(
                   flex: 1,
                   child: Center(
@@ -93,7 +94,7 @@ class _ScaleState extends State<Scale> {
                       Text('STATS', style: columnNameStyle,)
                   ),
                 ),
-                Container(width: 16,),
+                Container(width: 32,),
                 Expanded(
                   flex: 2,
                   child: Center(
@@ -140,15 +141,14 @@ class _ScaleState extends State<Scale> {
                   flex: 1,
                   child: Rewards(),
                 ),
-                Container(width: 16,),
+                Container(width: 32,),
                 Expanded(
                   flex: 1,
                   child: Center(
-                      child:
-                      Text('REWARDS', style: columnNameStyle,)
+                      child: Stats(),
                   ),
                 ),
-                Container(width: 16,),
+                Container(width: 32,),
                 Expanded(
                   flex: 2,
                   child: Center(
