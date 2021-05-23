@@ -49,7 +49,7 @@ class _HomeState extends State<Home> {
     return FutureBuilder<bool>(
       future: NfcManager.instance.isAvailable(),
       builder: (context, ss) => ss.data != true
-          ? Center(child: Text('NFCManager is not available'))
+          ? Scaffold(body: Center(child: Text('NFCManager is not available')))
           : Scaffold(
               body: Stack(
               alignment: Alignment.center,
