@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:zero_waste_frontend/common/globals.dart';
 import 'package:zero_waste_frontend/common/providers/home_provider.dart';
 import 'package:zero_waste_frontend/mobile/home/info_card.dart';
+import 'package:zero_waste_frontend/proto/containers.pb.dart';
+import 'package:zero_waste_frontend/mobile/container_details.dart';
 
 const textShadow = Shadow(
   blurRadius: 2.0,
@@ -37,6 +39,10 @@ class _HomeState extends State<Home> {
 
       final provider = context.read<HomeProvider>();
       provider.scanContainer(identifierStr);
+      Navigator.push(context, MaterialPageRoute(
+          builder: (context) => ContainerDetails(container: RContainer(
+              nfcId: identifierStr,
+              name: 'Container ${identifierStr.hashCode.toString().substring(0, 2)}'))));
     });
 
     super.initState();

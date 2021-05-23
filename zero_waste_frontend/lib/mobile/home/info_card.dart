@@ -42,17 +42,17 @@ class InfoCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     InfoText(
-                      title: '${provider.homeInfo.foodG}g',
+                      title: '4269g',
                       subtitle: 'food',
                       color: Pallette.primary,
                     ),
                     InfoText(
-                      title: '${provider.homeInfo.wasteSavedG}g',
+                      title: '100g',
                       subtitle: 'less waste',
                       color: Pallette.primary,
                     ),
                     InfoText(
-                      title: '${provider.homeInfo.co2SavedG}g',
+                      title: '169g',
                       subtitle: 'less co2',
                       color: Pallette.primary,
                     ),
