@@ -1,6 +1,9 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste_frontend/common/globals.dart';
+import 'package:zero_waste_frontend/common/providers/info_provider.dart';
 import 'package:zero_waste_frontend/common/providers/scale_provider.dart';
 import 'package:zero_waste_frontend/web/home/purchase.dart';
 import 'package:zero_waste_frontend/web/home/rewards.dart';
@@ -34,6 +37,7 @@ const columnNameStyle = TextStyle(
 class _ScaleState extends State<Scale> {
   final _curve = Curves.easeInOutQuad;
   final _duration = Duration(milliseconds: 400);
+  bool lastExpanded = false;
 
   @override
   void initState() {
@@ -208,6 +212,11 @@ class _ScaleState extends State<Scale> {
   Widget build(BuildContext context) {
     String tag = context.watch<ScaleProvider>().nfcId;
     bool expanded = tag != null && tag != '';
+
+    if (expanded && !lastExpanded) {
+      context.read<InfoProvider>().loadInfo(tag);
+    }
+    lastExpanded = expanded;
 
     return Center(
       child: Column(

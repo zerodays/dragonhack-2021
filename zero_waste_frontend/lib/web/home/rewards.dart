@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:zero_waste_frontend/common/globals.dart';
-import 'package:zero_waste_frontend/web/home/reward.dart';
+import 'package:zero_waste_frontend/common/providers/info_provider.dart';
+import 'package:zero_waste_frontend/proto/rewards.pb.dart';
+import 'package:provider/provider.dart';
 
 class Rewards extends StatelessWidget {
   const Rewards({Key key}) : super(key: key);
@@ -10,6 +11,8 @@ class Rewards extends StatelessWidget {
     final s = MediaQuery.of(context).size;
     final screenWidth = s.width;
     final screenHeight = s.height;
+
+    List<Reward> rewards = context.watch<InfoProvider>().rewards;
 
     return Container(
       width: screenWidth * 0.95,
@@ -28,16 +31,59 @@ class Rewards extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 16),
                   child: ListView(
-                    children: [
-                      Reward(
-                        title: 'OLDEST CONTAINER IN THE UNIVERSE',
-                        subtitle: '10% DISCOUNT ON BEVERAGES',
-                      ),
-                      Reward(
-                        title: 'OLDEST CONTAINER IN THE UNIVERSE',
-                        subtitle: '10% DISCOUNT ON BEVERAGES',
-                      ),
-                    ],
+                    padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+                    children: rewards.map((r) => Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            side: BorderSide(
+                              color: Theme.of(context).colorScheme.secondary,
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(8.0, 0, 0, 0),
+                                  child: Icon(
+                                    Icons.star,
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        r.reason.toUpperCase(),
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .secondary,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      Text(
+                                        r.reward.toUpperCase(),
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .secondary,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        )).toList(),
                   ),
                 ),
               ),

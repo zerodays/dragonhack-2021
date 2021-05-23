@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_persistent_socket/communication/socket_api.dart';
 import 'package:gm5_utils/mixins/subsctiptions_mixin.dart';
 import 'package:zero_waste_frontend/common/globals.dart';
 import 'package:zero_waste_frontend/messages.dart';
 import 'package:zero_waste_frontend/proto/containers.pb.dart';
 import 'package:zero_waste_frontend/proto/rewards.pb.dart';
 
-class RewardProvider extends ChangeNotifier with SubscriptionsMixin {
-  Map<String, RContainerInfo> containers = Map();
-  List<Reward> rewards;
+class InfoProvider extends ChangeNotifier with SubscriptionsMixin {
+  RContainerInfo container;
+  List<Reward> rewards = [];
 
-  RewardProvider() {
+  InfoProvider() {
+    listen(socketApi.getMessageHandler(RxRContainerInfo()), _onContainerInfo);
     listen(socketApi.getMessageHandler(RxRewards()), _onRewardInfo);
-    socketApi.fireFromCache(RxRewards());
+    socketApi.fireFromCache(RxRContainerInfo());
+  }
+
+  void _onContainerInfo(RxRContainerInfo message) {
+    container = message.data;
+    notifyListeners();
   }
 
   void _onRewardInfo(RxRewards message) {
@@ -20,9 +25,13 @@ class RewardProvider extends ChangeNotifier with SubscriptionsMixin {
     notifyListeners();
   }
 
-  Future<SocketApiTxStatus> loadRewards(RxRContainers containers) {
+  Future<void> loadInfo(String id) async {
+    socketApi.sendMessage(TxLoadRContainerInfo.create((data) {
+      data.nfcId = id;
+      return data;
+    }));
     return socketApi.sendMessage(TxLoadRewards.create((data) {
-      data.nfcIds.addAll(containers.data.containers.values.map((e) => e.nfcId));
+      data.nfcIds.addAll([id]);
       return data;
     }));
   }
