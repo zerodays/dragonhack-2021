@@ -68,19 +68,19 @@ class _ScaleState extends State<Scale> {
     );
   }
 
-  Widget _getAnimatedDivider(BuildContext context) {
+  Widget _getAnimatedDivider(BuildContext context, bool expanded) {
     final screenWidth = MediaQuery.of(context).size.width;
     return AnimatedContainer(
       curve: _curve,
       duration: _duration,
-      width: _expanded ? screenWidth * 0.95 : screenWidth * 0.75,
+      width: expanded ? screenWidth * 0.95 : screenWidth * 0.75,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           AnimatedOpacity(
             duration: _duration,
             curve: _curve,
-            opacity: _expanded ? 1 : 0,
+            opacity: expanded ? 1 : 0,
             child: Row(
               children: [
                 Expanded(
@@ -123,7 +123,7 @@ class _ScaleState extends State<Scale> {
             curve: _curve,
             duration: _duration,
             height: 4,
-            width: _expanded ? screenWidth * 0.95 : screenWidth * 0.75,
+            width: expanded ? screenWidth * 0.95 : screenWidth * 0.75,
             color: Pallette.primary,
           ),
         ],
@@ -131,7 +131,7 @@ class _ScaleState extends State<Scale> {
     );
   }
 
-  Widget _getAnimatedStats() {
+  Widget _getAnimatedStats(bool expanded) {
     final s = MediaQuery.of(context).size;
     final screenWidth = s.width;
     final screenHeight = s.height;
@@ -139,12 +139,12 @@ class _ScaleState extends State<Scale> {
       child: AnimatedOpacity(
         duration: _duration,
         curve: _curve,
-        opacity: _expanded ? 1 : 0,
+        opacity: expanded ? 1 : 0,
         child: AnimatedContainer(
           curve: _curve,
           duration: _duration,
           width: screenWidth * 0.95,
-          height: _expanded ? screenHeight * 0.7 : 0,
+          height: expanded ? screenHeight * 0.7 : 0,
           child: SingleChildScrollView(
               child: Row(
             children: [
@@ -175,12 +175,12 @@ class _ScaleState extends State<Scale> {
     );
   }
 
-  Widget _getWaitingLabel() {
+  Widget _getWaitingLabel(bool expanded) {
     return Padding(
       padding: const EdgeInsets.only(top: 48.0),
       child: Center(
         child: AnimatedOpacity(
-          opacity: _expanded ? 0 : 1,
+          opacity: expanded ? 0 : 1,
           duration: Duration(milliseconds: 200),
           curve: Curves.easeOut,
           child: Text(
@@ -193,12 +193,12 @@ class _ScaleState extends State<Scale> {
     );
   }
 
-  Widget _getStack() {
+  Widget _getStack(bool expanded) {
     return Stack(
       children: [
-        Positioned(child: _getAnimatedStats()),
+        Positioned(child: _getAnimatedStats(expanded)),
         Positioned(
-          child: _getWaitingLabel(),
+          child: _getWaitingLabel(expanded),
         ),
       ],
     );
@@ -206,7 +206,8 @@ class _ScaleState extends State<Scale> {
 
   @override
   Widget build(BuildContext context) {
-    bool expanded = context.watch<ScaleProvider>().nfcId != null;
+    String tag = context.watch<ScaleProvider>().nfcId;
+    bool expanded = tag != null && tag != '';
 
     return Center(
       child: Column(
@@ -218,8 +219,8 @@ class _ScaleState extends State<Scale> {
           Container(
             height: 48,
           ),
-          _getAnimatedDivider(context),
-          _getStack(),
+          _getAnimatedDivider(context, expanded),
+          _getStack(expanded),
         ],
       ),
     );
