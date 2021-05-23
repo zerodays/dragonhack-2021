@@ -56,6 +56,7 @@ class _ZeroWasteMobileState extends State<ZeroWasteMobile>
           WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();
         },
         child: MaterialApp(
+          debugShowCheckedModeBanner: false,
           navigatorKey: navigator,
           title: 'Zero Waste',
           theme: zeroWasteTheme.copyWith(
