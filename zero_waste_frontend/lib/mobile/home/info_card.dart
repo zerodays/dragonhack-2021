@@ -5,7 +5,7 @@ import 'package:zero_waste_frontend/common/globals.dart';
 import 'package:zero_waste_frontend/common/providers/home_provider.dart';
 import 'package:zero_waste_frontend/common/providers/reward_provider.dart';
 import 'package:zero_waste_frontend/mobile/containers.dart';
-
+import 'package:share/share.dart' as s;
 import '../../common/components/card_button.dart';
 import '../../common/components/info_text.dart';
 import '../rewards.dart';
@@ -81,7 +81,9 @@ class InfoCard extends StatelessWidget {
                       )),
               Container(height: 32.0),
               TextButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    s.Share.share('Check out how much I contributed to the environment.');
+                  },
                   icon: const Icon(
                     Icons.share,
                     color: Pallette.primary,
@@ -93,4 +95,7 @@ class InfoCard extends StatelessWidget {
       ),
     );
   }
+}
+
+class Share {
 }
