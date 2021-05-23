@@ -8,6 +8,7 @@ import 'package:moor/moor.dart' hide Column;
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:zero_waste_frontend/common/providers/container_provider.dart';
 import 'package:zero_waste_frontend/common/providers/home_provider.dart';
 import 'package:zero_waste_frontend/common/theme.dart';
 import 'package:zero_waste_frontend/mobile/router.dart';
@@ -43,7 +44,10 @@ class _ZeroWasteMobileState extends State<ZeroWasteMobile>
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (context) => HomeProvider())],
+      providers: [
+        ChangeNotifierProvider(create: (context) => HomeProvider()),
+        ChangeNotifierProvider(create: (context) => ContainerProvider())
+      ],
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: () {
