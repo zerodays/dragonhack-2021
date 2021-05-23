@@ -11,7 +11,7 @@ final bold = TextStyle(
     fontWeight: FontWeight.bold, color: Pallette.primary, fontSize: 17);
 final normal = TextStyle(color: Pallette.primary, fontSize: 17);
 
-const tabs = ['mass', 'impact', 'purchases'];
+const tabs = ['mass', 'co2', 'waste'];
 
 class ContainerDetails extends StatefulWidget {
   final RContainer container;
@@ -23,8 +23,58 @@ class ContainerDetails extends StatefulWidget {
 }
 
 class _ContainerDetailsState extends State<ContainerDetails> {
-  charts.Series dataMass, dataWaste, dataCo2;
   int currentTab = 0;
+
+  var dataMass = charts.Series<TimeSeriesData, DateTime>(
+    id: 'Mass',
+    data: [
+      TimeSeriesData(DateTime(2021, 4, 2), 0),
+      TimeSeriesData(DateTime(2021, 4, 5), 266),
+      TimeSeriesData(DateTime(2021, 4, 12), 392),
+      TimeSeriesData(DateTime(2021, 4, 20), 501),
+      TimeSeriesData(DateTime(2021, 4, 25), 679),
+      TimeSeriesData(DateTime(2021, 5, 5), 944),
+      TimeSeriesData(DateTime(2021, 5, 13), 1138),
+      TimeSeriesData(DateTime(2021, 5, 20), 1636),
+      TimeSeriesData(DateTime(2021, 5, 23), 1717),
+    ],
+    domainFn: (x, _) => x.time,
+    measureFn: (x, _) => x.dataPoint,
+  );
+
+  var dataCo2 = charts.Series<TimeSeriesData, DateTime>(
+    id: 'Mass',
+    data: [
+      TimeSeriesData(DateTime(2021, 4, 2), 0),
+      TimeSeriesData(DateTime(2021, 4, 5), 143),
+      TimeSeriesData(DateTime(2021, 4, 12), 309),
+      TimeSeriesData(DateTime(2021, 4, 20), 398),
+      TimeSeriesData(DateTime(2021, 4, 25), 499),
+      TimeSeriesData(DateTime(2021, 5, 5), 649),
+      TimeSeriesData(DateTime(2021, 5, 13), 793),
+      TimeSeriesData(DateTime(2021, 5, 20), 919),
+      TimeSeriesData(DateTime(2021, 5, 23), 1059),
+    ],
+    domainFn: (x, _) => x.time,
+    measureFn: (x, _) => x.dataPoint,
+  );
+
+  var dataWaste = charts.Series<TimeSeriesData, DateTime>(
+    id: 'Mass',
+    data: [
+      TimeSeriesData(DateTime(2021, 4, 2), 0),
+      TimeSeriesData(DateTime(2021, 4, 5), 5),
+      TimeSeriesData(DateTime(2021, 4, 12), 9),
+      TimeSeriesData(DateTime(2021, 4, 20), 14),
+      TimeSeriesData(DateTime(2021, 4, 25), 19),
+      TimeSeriesData(DateTime(2021, 5, 5), 22),
+      TimeSeriesData(DateTime(2021, 5, 13), 26),
+      TimeSeriesData(DateTime(2021, 5, 20), 27),
+      TimeSeriesData(DateTime(2021, 5, 23), 31),
+    ],
+    domainFn: (x, _) => x.time,
+    measureFn: (x, _) => x.dataPoint,
+  );
 
   @override
   void initState() {
@@ -42,15 +92,6 @@ class _ContainerDetailsState extends State<ContainerDetails> {
   Widget build(BuildContext context) {
     final provider = context.watch<ContainerProvider>();
     final c = provider.containers[widget.container.nfcId];
-
-    if (dataMass == null && c != null) {
-      dataMass = charts.Series<TimePoint, DateTime>(
-        id: 'Mass',
-        data: c.mass,
-        domainFn: (data, _) => socketApi.util.toDateTime(data.time),
-        measureFn: (data, _) => data.value,
-      );
-    }
 
     List<Widget> tabWidgets = [];
     for (int i = 0; i < 3; i++) {
@@ -83,6 +124,7 @@ class _ContainerDetailsState extends State<ContainerDetails> {
     if (currentTab == 0) {
       children = [
         Container(
+          key: UniqueKey(),
           height: 300,
           child: charts.TimeSeriesChart(
             [dataMass],
@@ -93,22 +135,25 @@ class _ContainerDetailsState extends State<ContainerDetails> {
     } else if (currentTab == 1) {
       children = [
         Container(
+          key: UniqueKey(),
           height: 300,
           child: charts.TimeSeriesChart(
             [dataCo2],
             animate: true,
           ),
         ),
+      ];
+    } else {
+      children = [
         Container(
-          height: 300,
+          key: UniqueKey(),
+          height: 300.0,
           child: charts.TimeSeriesChart(
             [dataWaste],
             animate: true,
           ),
         ),
       ];
-    } else {
-      children = [Container(height: 100.0,)];
     }
 
     return Scaffold(
