@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:zero_waste_frontend/common/globals.dart';
+import 'package:zero_waste_frontend/common/providers/scale_provider.dart';
+import 'package:zero_waste_frontend/web/home/purchase.dart';
 import 'package:zero_waste_frontend/web/home/rewards.dart';
 import 'package:zero_waste_frontend/web/home/stats.dart';
 
@@ -29,9 +32,13 @@ const columnNameStyle = TextStyle(
 );
 
 class _ScaleState extends State<Scale> {
-  bool _expanded = true;
   final _curve = Curves.easeInOutQuad;
   final _duration = Duration(milliseconds: 400);
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   Widget _getLogo() {
     return Column(
@@ -62,10 +69,7 @@ class _ScaleState extends State<Scale> {
   }
 
   Widget _getAnimatedDivider(BuildContext context) {
-    final screenWidth = MediaQuery
-        .of(context)
-        .size
-        .width;
+    final screenWidth = MediaQuery.of(context).size.width;
     return AnimatedContainer(
       curve: _curve,
       duration: _duration,
@@ -82,30 +86,39 @@ class _ScaleState extends State<Scale> {
                 Expanded(
                   flex: 1,
                   child: Center(
-                      child:
-                      Text('REWARDS', style: columnNameStyle,)
-                  ),
+                      child: Text(
+                    'REWARDS',
+                    style: columnNameStyle,
+                  )),
                 ),
-                Container(width: 32,),
+                Container(
+                  width: 32,
+                ),
                 Expanded(
                   flex: 1,
                   child: Center(
-                      child:
-                      Text('STATS', style: columnNameStyle,)
-                  ),
+                      child: Text(
+                    'STATS',
+                    style: columnNameStyle,
+                  )),
                 ),
-                Container(width: 32,),
+                Container(
+                  width: 32,
+                ),
                 Expanded(
                   flex: 2,
                   child: Center(
-                      child:
-                      Text('PURCHASE', style: columnNameStyle,)
-                  ),
+                      child: Text(
+                    'PURCHASE',
+                    style: columnNameStyle,
+                  )),
                 ),
               ],
             ),
           ),
-          Container(height: 4,),
+          Container(
+            height: 4,
+          ),
           AnimatedContainer(
             curve: _curve,
             duration: _duration,
@@ -119,9 +132,7 @@ class _ScaleState extends State<Scale> {
   }
 
   Widget _getAnimatedStats() {
-    final s = MediaQuery
-        .of(context)
-        .size;
+    final s = MediaQuery.of(context).size;
     final screenWidth = s.width;
     final screenHeight = s.height;
     return Center(
@@ -135,30 +146,30 @@ class _ScaleState extends State<Scale> {
           width: screenWidth * 0.95,
           height: _expanded ? screenHeight * 0.7 : 0,
           child: SingleChildScrollView(
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: Rewards(),
+              child: Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: Rewards(),
+              ),
+              Container(
+                width: 32,
+              ),
+              Expanded(
+                flex: 1,
+                child: Center(
+                  child: Stats(),
                 ),
-                Container(width: 32,),
-                Expanded(
-                  flex: 1,
-                  child: Center(
-                      child: Stats(),
-                  ),
-                ),
-                Container(width: 32,),
-                Expanded(
-                  flex: 2,
-                  child: Center(
-                      child:
-                      Text('PURCHASE', style: columnNameStyle,)
-                  ),
-                ),
-              ],
-            )
-          ),
+              ),
+              Container(
+                width: 32,
+              ),
+              Expanded(
+                flex: 2,
+                child: Purchase(),
+              ),
+            ],
+          )),
         ),
       ),
     );
@@ -173,9 +184,9 @@ class _ScaleState extends State<Scale> {
           duration: Duration(milliseconds: 200),
           curve: Curves.easeOut,
           child: Text(
-              'WAITING FOR CONTAINER',
-              textAlign: TextAlign.center,
-              style: waitingStyle,
+            'WAITING FOR CONTAINER',
+            textAlign: TextAlign.center,
+            style: waitingStyle,
           ),
         ),
       ),
@@ -185,9 +196,7 @@ class _ScaleState extends State<Scale> {
   Widget _getStack() {
     return Stack(
       children: [
-        Positioned(
-            child: _getAnimatedStats()
-        ),
+        Positioned(child: _getAnimatedStats()),
         Positioned(
           child: _getWaitingLabel(),
         ),
@@ -197,6 +206,8 @@ class _ScaleState extends State<Scale> {
 
   @override
   Widget build(BuildContext context) {
+    bool expanded = context.watch<ScaleProvider>().nfcId != null;
+
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.max,

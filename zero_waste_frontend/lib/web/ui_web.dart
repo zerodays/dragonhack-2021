@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:gm5_utils/mixins/subsctiptions_mixin.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste_frontend/common/globals.dart';
+import 'package:zero_waste_frontend/common/providers/scale_provider.dart';
 import 'package:zero_waste_frontend/common/theme.dart';
 import 'package:zero_waste_frontend/web/router.dart';
 import 'login/login.dart';
 
 Future<Widget> get application async {
-  return ZeroWasteWeb();
-  // return MultiProvider(
-  //   providers: [
-  //     ChangeNotifierProvider(create: (context) => HomeProvider()),
-  //   ],
-  //   child: ZeroWasteWeb(),
-  // );
+  return MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (context) => ScaleProvider()),
+    ],
+    child: ZeroWasteWeb(),
+  );
 }
 
 class ZeroWasteWeb extends StatefulWidget {

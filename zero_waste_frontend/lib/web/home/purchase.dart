@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:zero_waste_frontend/common/globals.dart';
+import 'package:provider/provider.dart';
+import 'package:zero_waste_frontend/common/providers/scale_provider.dart';
 
 class Purchase extends StatelessWidget {
   const Purchase({Key key}) : super(key: key);
@@ -174,6 +176,7 @@ class Purchase extends StatelessWidget {
     final s = MediaQuery.of(context).size;
     final screenWidth = s.width;
     final screenHeight = s.height;
+    final provider = context.watch<ScaleProvider>();
 
     return Container(
       width: screenWidth * 0.95,
@@ -198,7 +201,7 @@ class Purchase extends StatelessWidget {
                         color: Pallette.primary,
                         child: Center(
                           child: Text(
-                            '1.453 KG',
+                            '${(provider?.weightG?.round() ?? 0)}g',
                             style: TextStyle(
                                 fontWeight: FontWeight.w700,
                                 color: Colors.white,
