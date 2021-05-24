@@ -1,4 +1,14 @@
 # Dragonhack 2021 - Zero Waste
 
-Zero waste is a platform that makes it easier to live a zero waste life and encourages the user to live without producing any waste. Each container has a nfc tag that identifies it. With the help of our smart scale, the user does not have to weigh the container every time they enter into a zero waste store and instead the cachier's scale knows the weight of the container and calculates the weight of the contents seamlessly. We also count the number of times a container has been reused. User can view this info and see how much packaing they have saved. The app encourages them to reuse containers by making it possible to compete with his friends on who lives the most zero waste time.
+We developed a NFC-enabled smart scale integrated into a user-friendly web interface for zero waste shops. The scale automatically identifies detected containers and calculates container’s contents weight (without the container itself). This reduces end user's workload by 50% while encouraging zero waste lifestyle through an engaging mobile app. User can scan a container to view its reuse statistics as well as one’s own environmental impact.
 
+## Submission video
+
+[![Dragonhack 2021 video](https://img.youtube.com/vi/qf5JxDB0clQ/0.jpg)](https://www.youtube.com/watch?v=qf5JxDB0clQ)
+
+## Project structure
+
+- [`zero_waste_backend`](https://github.com/zerodays/dragonhack-2021/tree/master/zero_waste_backend) - Django backend
+- [`zero_waste_frontend`](https://github.com/zerodays/dragonhack-2021/tree/master/zero_waste_frontend) - Mobile and web app build using Flutter
+- `zero_waste_proto` - Protobuf definitions for communication between backend and frontend
+- [`zero_waste_scale`](https://github.com/zerodays/dragonhack-2021/tree/master/zero_waste_scale) - Software running on smart scale
