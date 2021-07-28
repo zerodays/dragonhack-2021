@@ -2,6 +2,7 @@ from typing import List
 
 import proto_socket_django as psd
 from django.db.models import QuerySet
+from django.utils import timezone
 
 import proto.messages as pb
 from authentication.models import UserGroups
@@ -11,6 +12,11 @@ from sellers.models import Seller
 
 
 class ContainersReceiver(psd.FPSReceiver):
+    def __init__(self, consumer: psd.ApiWebsocketConsumer):
+        super().__init__(consumer)
+        self.tag = None
+        self.tag_time = timezone.now()
+
     @psd.receive(auth=False)
     def get_home_info(self, message: pb.RxGetHomeInfo):
         containers: QuerySet[RContainer] = RContainer.objects.filter(nfc_id__in=message.proto.nfc_ids or [])
@@ -50,6 +56,12 @@ class ContainersReceiver(psd.FPSReceiver):
     @psd.receive(auth=False)
     def scale_measurement(self, message: pb.RxScaleMeasurement):
         update = pb.TxScaleUpdate()
+        # if self.tag and not message.proto.nfc_id and timezone.now() - self.tag_time < timezone.timedelta(seconds=3):
+        #     message.proto.nfc_id = self.tag
+        # else:
+        #     self.tag = message.proto.nfc_id
+        #     self.tag_time = timezone.now()
+
         update.proto.nfc_id = message.proto.nfc_id
         update.proto.weight_g = message.proto.weight_g
-        self.consumer.broadcast(UserGroups.authenticated, update)
+        self.consumer.broadcast('base_consumer_group', update)

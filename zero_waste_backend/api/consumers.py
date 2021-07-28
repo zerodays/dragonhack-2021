@@ -1,5 +1,4 @@
 from proto_socket_django import ApiWebsocketConsumer
-
 from authentication.models import UserGroups
 from authentication.receiver import AuthenticationReceiver
 from containers.receivers import ContainersReceiver
